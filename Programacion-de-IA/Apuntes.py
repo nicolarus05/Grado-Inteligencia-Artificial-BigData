@@ -1,0 +1,144 @@
+#TEMA 1 Introduccion y fundamentos de python
+'''
+Es un lenguaje de programacion interpretado, multiparadigma y multiplataforma.
+Fue creado por Guido van Rossum y su primera version fue lanzada en 1991.
+Python se utiliza en desarrollo web, ciencia de datos, inteligencia artificial, automatizacion de tareas, entre otros.
+'''
+
+#TEMA 2 Tipos de datos y Operadores logicos
+'''
+Los tipos de datos mas comunes en python son:
+- Numeros: enteros (int) y de punto flotante (float)
+- Cadenas de texto (str)
+- Listas (list)
+- Tuplas (tuple)
+- Diccionarios (dict)
+- Conjuntos (set)
+
+Los operadores logicos en python son:
+- and
+- or
+- not
+'''
+#Ejemplo de tipos de datos
+entero = 10
+flotante = 10.5
+cadena = "Hola, Mundo!"
+booleano = True
+
+#Operadores aritmeticos
+"""
++ Suma
+- Resta
+* Multiplicacion
+/ Division
+% Modulo
+** Exponente
+// Division entera
+"""
+
+#Operadores de comparacion
+"""
+== Igual
+!= Diferente
+> Mayor que
+< Menor que
+>= Mayor o igual que
+<= Menor o igual que
+and, or, not Operadores logicos
+"""
+#Ejemplos
+#1. La media de 3 notas (0-10) y decir si aprueba o no (5 o mas)
+""" nota1 = float(input("Introduce la primera nota: "))
+nota2 = float(input("Introduce la segunda nota: "))
+nota3 = float(input("Introduce la tercera nota: "))
+
+media = (nota1 + nota2 + nota3) / 3
+if media >= 5:
+    print("Aprobado")
+else:
+    print("Suspenso") """
+    
+#2. Suma de dos numeros y muestra el tipo de dato
+""" num1 = float(input("Introduce el primer numero: "))
+num2 = float(input("Introduce el segundo numero: "))
+suma = num1 + num2
+print("La suma es:", suma)
+print("El tipo de dato de la suma es:", type(suma)) """
+
+#3. Multiplica por 2 un numero decimal ingresado como texto
+""" num = input("Introduce un numero decimal: ")
+num_decimal = float(num)
+resultado = num_decimal * 2
+print("El resultado es:", resultado) """
+
+#4. Verificar si es mayor de edad (18 o mas)
+""" edad = int(input("Introduce tu edad: "))
+if edad >= 18:
+    print("Eres mayor de edad")
+else:
+    print("Eres menor de edad") """
+    
+#5. Muestra el mayor de dos numeros
+""" num1 = float(input("Introduce el primer numero: "))
+num2 = float(input("Introduce el segundo numero: "))
+if num1 > num2:
+    print("El mayor es:", num1)
+else:
+    print("El mayor es:", num2) """
+    
+#6. Verificar si un numero es par y mayor que 10
+""" num = float(input("Introduce un numero: "))
+if num > 10 and num % 2 == 0:
+    print("El numero es par y mayor que 10")
+else:
+    print("El numero no cumple las condiciones") """
+
+#7. operador logico(and) entre dos valores convertidos a booleanos
+""" valor1 = "hola"
+valor2 = 5
+
+valor1 = bool(valor1)
+valor2 = bool(valor2)
+
+resultado = valor1 and valor2
+
+print("El resultado de valor1 and valor2 es:", resultado) """
+
+#8. Indica si un numero es 0, positivo o negativo (hacerlo en el menor numero de lineas posible)
+""" num = float(input("Introduce un numero: "))
+if num > 0: print("Positivo")
+elif num < 0: print("Negativo")
+else: print("Cero") """
+
+#Operadores especiales
+"""
+Pertenencia: in, not in
+    in: Verifica si un elemento esta en una secuencia
+    not in: Verifica si un elemento no esta en una secuencia
+
+Identidad: is, is not
+    is: Verifica si dos variables apuntan al mismo objeto en memoria
+    is not: Verifica si dos variables no apuntan al mismo objeto en memoria
+"""
+
+#Ejercicios 
+#9 Busca una palabra en una frase y verifica condiciones in/not in
+frase = "En un lugar de La Mancha"
+palabra = str(input("Introduce una palabra: "))
+if palabra in frase:
+    print("La palabra esta en la frase")
+else:
+    print("La palabra no esta en la frase")
+    
+#10 Comparacion de tipo y valores usando is/is not
+a = 5
+b = 5
+c = "hello"
+d = [1, 2, 3]
+
+print(a is b)  # True
+print(a is not b)  # False
+print(type(a) is int)  # True
+print(type(c) is not int)  # True
+print(d is [1, 2, 3])  # False
