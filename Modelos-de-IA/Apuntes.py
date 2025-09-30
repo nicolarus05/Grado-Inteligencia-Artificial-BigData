@@ -24,4 +24,19 @@ Proceso de entrenamiento de un modelo de IA:
 - Entrenamiento: El modelo aprende a partir de un conjunto de datos de entrenamiento.
 - Evaluacion: Evaluar el rendimiento del modelo utilizando un conjunto de datos de validacion.
 - Ajuste: Ajustar los parametros del modelo para mejorar su rendimiento.
+
+Tipos de Modelos:
+- Modelos supervisados: El modelo aprende a partir de datos etiquetados.
+- Modelos no supervisados: El modelo aprende a partir de datos no etiquetados.
+- Modelos de Refuerzo: El modelo aprende a partir de interacciones con el entorno para maximizar una recompensa.
+
+Fases de la curva de aprendizaje:
+- Fase inciial: El modelo comienza a aprender y su rendimiento mejora rapidamente.
+- Fase intermedia: El rendimiento del modelo sigue mejorando, pero a un ritmo mas lento.
+- Fase de saturacion: El rendimiento del modelo se estabiliza y las mejoras son marginal
+
+Concepto de overfitting(sobreajuste): El modelo se ajusta demasiado bien a los datos de entrenamiento, 
+pero no generaliza bien a datos nuevos o no vistos anteriormente.
+
+
 '''
