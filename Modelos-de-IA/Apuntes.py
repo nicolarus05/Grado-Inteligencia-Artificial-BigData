@@ -37,6 +37,17 @@ Fases de la curva de aprendizaje:
 
 Concepto de overfitting(sobreajuste): El modelo se ajusta demasiado bien a los datos de entrenamiento, 
 pero no generaliza bien a datos nuevos o no vistos anteriormente.
+'''
+
+#Tema 2: Sistemas Inteligentes y Eficiencia Operativa:
+'''
+Los sistemas inteligentes son tecnologias que aprenden, toman decisiones y se adaptan a nuevas situaciones.
+
+- Sistemas Expertos: Sistemas que emulan la toma de decisiones de un experto humano en un dominio especifico.
+- Redes Neuronales: Sistemas inspirados en la estructura del cerebro humano que pueden aprender y reconocer patrones complejos.
+- Aprendizaje Automático: Tecnicas que permiten a los sistemas aprender y mejorar a partir de datos sin ser programados explicitamente.
+- Agentes Inteligentes: Sistemas que pueden percibir su entorno, razonar y tomar decisiones autonomamente.
+- Sistemas Cognitivos: Tecnologias que simulan el pensamiento humano para resolver problemas complejos y tomar decisiones informadas.
 
 
 '''
