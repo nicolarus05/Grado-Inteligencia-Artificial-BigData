@@ -29,5 +29,15 @@ DataWarehouse: Es un sistema utilizado para el almacenamiento y análisis de dat
 
 ETL: Proceso de Extracción, Transformación y Carga de datos.
 
+'''
+
+#TEMA 2: Matematicas discretas
+'''
+- Conjuntos: Colecciones de elementos que comparten una propiedad en común.
+- Relaciones: Asociaciones entre elementos de diferentes conjuntos.
+- Funciones: Relaciones especiales que asignan un único valor de salida a cada valor de entrada.
+- Combinatoria: Estudio de las diferentes formas de seleccionar y organizar elementos.
+- Grafos: Estructuras que representan relaciones entre objetos, compuestas por nodos y aristas.
+- Algoritmos: Conjuntos de instrucciones para resolver problemas específicos.
 
 '''

@@ -269,3 +269,8 @@ for i in range(1, asteriscos + 1):
     for j in range(i):
         print("*", end="")
     print()
+
+#Tema 4: Funciones y Modularizacion
+'''
+
+'''
