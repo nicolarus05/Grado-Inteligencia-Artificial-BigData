@@ -325,3 +325,56 @@ from math import sqrt    # importa solo una función
 from math import *       # importa todo (no recomendado)
 import math as m         # alias para el módulo
 '''
+
+#Tema 5: Colecciones en Python
+'''
+- Listas: colecciones ordenadas y mutables. Se definen con corchetes [].
+  - append(): Agrega un elemento al final de la lista.
+  - extend(): Agrega los elementos de otra lista.
+  - insert(): Agrega un elemento en una posicion especifica.
+  - remove(): Elimina el primer elemento con el valor especificado.
+  - pop(): Elimina y devuelve el ultimo elemento de la lista.
+  - clear(): Elimina todos los elementos de la lista.
+  - index(): Devuelve la posicion del primer elemento con el valor especificado.
+  - count(): Devuelve el numero de veces que un elemento aparece en la lista.
+  - sort(): Ordena los elementos de la lista.
+  - reverse(): Invierte el orden de los elementos de la lista.
+  - copy(): Devuelve una copia superficial de la lista.
+  - Lista por comprension: 
+    - Sintaxis: [expresion for item in iterable if condicion]
+    - Ejemplo: cuadrados = [x**2 for x in range(10) if x % 2 == 0]
+    - Ventajas: codigo mas conciso y legible, mejor rendimiento.
+    - Desventajas: puede ser menos claro para principiantes, no apto para operaciones complejas.
+
+- Tuplas: colecciones ordenadas e inmutables. Se definen con paréntesis ().
+  - count(): Devuelve el número de veces que un elemento aparece en la tupla.
+  - index(): Devuelve la posición del primer elemento con el valor especificado.
+
+- Diccionarios: colecciones desordenadas de pares clave-valor. Se definen con llaves {}.
+  - keys(): Devuelve una lista con las claves del diccionario.
+  - values(): Devuelve una lista con los valores del diccionario.
+  - items(): Devuelve una lista de tuplas con los pares clave-valor.
+  - get(): Devuelve el valor de una clave especificada.
+  - pop(): Elimina y devuelve el valor de una clave especificada.
+
+- Conjuntos: colecciones desordenadas de elementos únicos. Se definen con llaves {} o con la función set().
+  - add(): Agrega un elemento al conjunto.
+  - remove(): Elimina un elemento del conjunto.
+  - discard(): Elimina un elemento del conjunto sin generar un error si no existe.
+  - pop(): Elimina y devuelve un elemento aleatorio del conjunto.
+  - clear(): Elimina todos los elementos del conjunto.
+'''
+
+#Tema 6 Manejo de errores y excepciones
+'''
+Tipos de errores comunes: 
+- SyntaxError: error de sintaxis.
+- TypeError: operacion o funcion aplicada a un tipo de dato inapropiado.
+- NameError: variable o funcion no definida.
+- IndexError: indice fuera de rango.
+- KeyError: clave no encontrada en un diccionario.
+- ValueError: valor inapropiado para una operacion.
+- ZeroDivisionError: division por cero.
+
+raise: se utiliza para lanzar una excepcion de manera explicita.
+'''
