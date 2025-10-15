@@ -272,5 +272,56 @@ for i in range(1, asteriscos + 1):
 
 #Tema 4: Funciones y Modularizacion
 '''
+Una funcion es un bloque de codigo reutilizable que realiza una tarea especifica.
+'''
+#Ejemplo
+def suma(a, b):
+    return a + b
 
+'''
+Tipos de funciones:
+
+1. Funciones predefinidas: Son las que ya vienen con python, como print(), input(), len(), etc.
+2. Funciones definidas por el usuario: creadas por el programador usando def.
+3. Funciones lambda(funciones anonimas): se definen en una sola linea, sin nombre.
+'''
+#Ejemplo de funcion lambda
+cuadrado = lambda x: x ** 2
+print(cuadrado(5))
+
+'''
+Parametros y argumentos:
+- Parametros: variables que se definen en la funcion. 
+- Argumentos: valores que se pasan al llamar la funcion.
+'''
+#Ejemplo
+def saludar(nombre):  # nombre es el parametro
+    print("Hola,", nombre)
+    
+saludar("Juan")  # "Juan" es el argumento
+
+'''
+Tipos de parametros:
+1. Posicionales: se pasan en orden.
+2. Nombrados: se especifica el nombre del parametro.
+3. Por defecto: tienen un valor predefinido.
+4. Arbitrarios: permiten un numero variable de argumentos. 
+'''
+
+'''
+Modularacion en python.
+La modularizacion consiste en dividir un programa en modulos mas pequeños y manejables, cada uno con funciones especificas.
+
+Ventajas:
+- Reutilizacion de codigo.
+- Mantenimiento mas facil.
+- Mejor organizacion.
+'''
+
+'''
+Tipos de importacion:
+import math              # importa todo el módulo
+from math import sqrt    # importa solo una función
+from math import *       # importa todo (no recomendado)
+import math as m         # alias para el módulo
 '''
