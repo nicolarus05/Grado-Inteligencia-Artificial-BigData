@@ -378,3 +378,5 @@ Tipos de errores comunes:
 
 raise: se utiliza para lanzar una excepcion de manera explicita.
 '''
+
+#Tema 7 

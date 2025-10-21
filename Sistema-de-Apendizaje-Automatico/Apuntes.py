@@ -40,6 +40,21 @@ Usos del deep learning:
 - Conducción autónoma.
 - Diagnóstico médico.
 - Generación de contenido (imágenes, texto, música).
+'''
 
+#TEMA 2: Tecnicas de aprendizaje automatico
+'''
+Principales categorias: 
+- Aprendizaje supervisado: El modelo aprende a partir de datos etiquetados.
+- Aprendizaje no supervisado: El modelo aprende a partir de datos no etiquetados(fotos, videos, sonido).
+- Aprendizaje por refuerzo: El modelo aprende a través de interacciones con un entorno y recibe recompensas o castigos.
 
+Tecnicas Principales:
+- Redes neuronales: Modelos inspirados en la estructura del cerebro humano, ideales para tareas complejas como reconocimiento de voz.
+    - Neuronas: Unidades basicas que reciben entradas, las procesan y generan una salida.
+    - Pesos: Valores que determinan la importancia de cada entrada en la neurona.
+    - Funciones de activacion: Determinan si una neurona se activa o no, introduciendo no linealidad en el modelo.
+- Clustering: Agrupacion de datos en clusteres para detectar patrones ocultos. 
+- Arboles de decision: Modelos que utilizan una estructura de arbol para tomar decisiones basadas en condiciones.
+- Regresion: Tecnica utilizada para predecir valores continuos basados en relaciones entre variables.
 '''
