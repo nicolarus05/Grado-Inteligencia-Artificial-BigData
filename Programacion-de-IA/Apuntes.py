@@ -379,4 +379,28 @@ Tipos de errores comunes:
 raise: se utiliza para lanzar una excepcion de manera explicita.
 '''
 
-#Tema 7 
+#Tema 7 Modulos y Paquetes
+'''
+Modulo: Archivo .py que contiene funciones, clases y variables relacionadas.
+Paquete: Coleccion de modulos organizados en un directorio con un archivo __init__.py.
+
+Que es pip?
+- Pip es el gestor de paquetes de Python que permite instalar y gestionar bibliotecas y dependencias externas.
+
+Comandos basicos de pip:
+- pip install nombre_paquete: Instala un paquete.
+- pip uninstall nombre_paquete: Desinstala un paquete.
+- pip list: Muestra los paquetes instalados.
+- pip show nombre_paquete: Muestra informacion sobre un paquete instalado.
+- pip freeze: Muestra las versiones de los paquetes instalados en formato compatible con requirements.txt
+- pip install --upgrade nombre_paquete: Actualiza un paquete a la ultima version.
+
+Como crear un paquete:
+1. Crea un directorio con el nombre del paquete.
+2. Dentro del directorio, crea un archivo __init__.py (puede estar vacio).
+3. Agrega modulos (.py) dentro del directorio.
+4. Importa los modulos en __init__.py si es necesario.
+5. Instala el paquete localmente usando pip install -e ruta_del_directorio.
+
+
+'''
