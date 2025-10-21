@@ -401,6 +401,26 @@ Como crear un paquete:
 3. Agrega modulos (.py) dentro del directorio.
 4. Importa los modulos en __init__.py si es necesario.
 5. Instala el paquete localmente usando pip install -e ruta_del_directorio.
+'''
 
+# Tema 8: lectura y escritura de archivos
+'''
+Manejo de CSV con csv: 
+- csv.reader(): Lee archivos CSV.
+- csv.writer(): Escribe archivos CSV.
+- csv.DictReader(): Lee archivos CSV como diccionarios.
+- Abrir archivos con newline='' para evitar problemas de formato.
 
+Pandas para manejo de datos:
+DataFrame: tabla de datos bidimensional.
+- head(): Muestra las primeras filas del DataFrame.
+- info(): Muestra informacion del DataFrame.
+- describe(): Estadisticas descriptivas del DataFrame.
+
+Paso a paso de CSV a DataFrame:
+1. Importar pandas: import pandas as pd
+2. Leer CSV: df = pd.read_csv('archivo.csv')
+3. Explorar datos: df.head(), df.info()
+4. Manipular datos: df['columna'], df.loc[], df.iloc[]
+5. Guardar cambios: df.to_csv('archivo_modificado.csv', index=False)
 '''
