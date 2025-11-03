@@ -424,3 +424,12 @@ Paso a paso de CSV a DataFrame:
 4. Manipular datos: df['columna'], df.loc[], df.iloc[]
 5. Guardar cambios: df.to_csv('archivo_modificado.csv', index=False)
 '''
+
+#Tema 9: Introduccion a Docker.
+'''
+Docker es una plataforma de contenedores que permite empaquetar aplicaciones y sus dependencias en un entorno aislado y portable.
+
+- FastApi: Es un framework web moderno y rapido para construir APIs con Python. Se destaca por su rendimiento y facilidad de uso.
+- Clean Architecture: Es un patron de diseño de software que organiza el codigo en capas, 
+    separando la logica de negocio de los detalles de implementacion, facilitando el mantenimiento y la escalabilidad.
+'''

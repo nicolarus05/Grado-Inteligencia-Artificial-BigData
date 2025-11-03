@@ -75,4 +75,10 @@ Metricas de rendimiento:
 - FPR (False Positive Rate): Proporción de negativos incorrectamente clasificados como positivos.
 - F1-Score: Media armonica entre precision y recall, proporcionando una unica medida de rendimiento del modelo.
 - AUC-ROC: Area bajo la curva ROC, que mide la capacidad del modelo para distinguir entre clases positivas y negativas.
+
+Formulas:
+- Precision: TP / (TP + FP)
+- Recall: TP / (TP + FN)
+- F1-Score: 2 * (Precision * Recall) / (Precision + Recall) 
+- Especificidad: TN / (TN + FP)
 '''
