@@ -429,7 +429,43 @@ Paso a paso de CSV a DataFrame:
 '''
 Docker es una plataforma de contenedores que permite empaquetar aplicaciones y sus dependencias en un entorno aislado y portable.
 
-- FastApi: Es un framework web moderno y rapido para construir APIs con Python. Se destaca por su rendimiento y facilidad de uso.
+- FastApi: Es un framework web rapido para construir APIs con Python. Se destaca por su rendimiento y facilidad de uso.
 - Clean Architecture: Es un patron de diseño de software que organiza el codigo en capas, 
     separando la logica de negocio de los detalles de implementacion, facilitando el mantenimiento y la escalabilidad.
+'''
+
+#Tema 10: Bases de datos con python.
+'''
+Conexion a SQLite con sqlite3:
+- Conectar a la base de datos: conn = sqlite3.connect('base_de_datos.db')
+- Crear un cursor: cursor = conn.cursor()
+- Ejecutar consultas SQL: cursor.execute('SQL_QUERY')
+- Obtener resultados: resultados = cursor.fetchall()
+- Guardar cambios: conn.commit()
+- Cerrar la conexion: conn.close()
+'''
+
+#Tema 11: lectura y escritura de archivos csv.
+'''
+Manejo de CSV con csv: 
+- csv.reader(): Lee archivos CSV.
+- csv.writer(): Escribe archivos CSV.
+- csv.DictReader(): Lee archivos CSV como diccionarios.
+- csv.DictWriter(): Escribe archivos CSV desde diccionarios.
+- Abrir archivos con newline='' para evitar problemas de formato.
+
+Gestores de contexto:
+- with: Se utiliza para manejar recursos como archivos, asegurando que se cierren correctamente.
+Ejemplo:
+with open('archivo.csv', 'r', newline='') as archivo:
+    lector = csv.reader(archivo)
+    for fila in lector:
+        print(fila)
+        
+Pasos a paso de csv a DataFrame con pandas:
+1. Importar pandas: import pandas as pd
+2. Leer CSV: df = pd.read_csv('archivo.csv')
+3. Explorar datos: df.head(), df.info()
+4. Manipular datos: df['columna'], df.loc[], df.iloc[]
+5. Guardar cambios: df.to_csv('archivo_modificado.csv', index=False)
 '''
