@@ -379,4 +379,93 @@ Tipos de errores comunes:
 raise: se utiliza para lanzar una excepcion de manera explicita.
 '''
 
-#Tema 7 
+#Tema 7 Modulos y Paquetes
+'''
+Modulo: Archivo .py que contiene funciones, clases y variables relacionadas.
+Paquete: Coleccion de modulos organizados en un directorio con un archivo __init__.py.
+
+Que es pip?
+- Pip es el gestor de paquetes de Python que permite instalar y gestionar bibliotecas y dependencias externas.
+
+Comandos basicos de pip:
+- pip install nombre_paquete: Instala un paquete.
+- pip uninstall nombre_paquete: Desinstala un paquete.
+- pip list: Muestra los paquetes instalados.
+- pip show nombre_paquete: Muestra informacion sobre un paquete instalado.
+- pip freeze: Muestra las versiones de los paquetes instalados en formato compatible con requirements.txt
+- pip install --upgrade nombre_paquete: Actualiza un paquete a la ultima version.
+
+Como crear un paquete:
+1. Crea un directorio con el nombre del paquete.
+2. Dentro del directorio, crea un archivo __init__.py (puede estar vacio).
+3. Agrega modulos (.py) dentro del directorio.
+4. Importa los modulos en __init__.py si es necesario.
+5. Instala el paquete localmente usando pip install -e ruta_del_directorio.
+'''
+
+# Tema 8: lectura y escritura de archivos
+'''
+Manejo de CSV con csv: 
+- csv.reader(): Lee archivos CSV.
+- csv.writer(): Escribe archivos CSV.
+- csv.DictReader(): Lee archivos CSV como diccionarios.
+- Abrir archivos con newline='' para evitar problemas de formato.
+
+Pandas para manejo de datos:
+DataFrame: tabla de datos bidimensional.
+- head(): Muestra las primeras filas del DataFrame.
+- info(): Muestra informacion del DataFrame.
+- describe(): Estadisticas descriptivas del DataFrame.
+
+Paso a paso de CSV a DataFrame:
+1. Importar pandas: import pandas as pd
+2. Leer CSV: df = pd.read_csv('archivo.csv')
+3. Explorar datos: df.head(), df.info()
+4. Manipular datos: df['columna'], df.loc[], df.iloc[]
+5. Guardar cambios: df.to_csv('archivo_modificado.csv', index=False)
+'''
+
+#Tema 9: Introduccion a Docker.
+'''
+Docker es una plataforma de contenedores que permite empaquetar aplicaciones y sus dependencias en un entorno aislado y portable.
+
+- FastApi: Es un framework web rapido para construir APIs con Python. Se destaca por su rendimiento y facilidad de uso.
+- Clean Architecture: Es un patron de diseño de software que organiza el codigo en capas, 
+    separando la logica de negocio de los detalles de implementacion, facilitando el mantenimiento y la escalabilidad.
+'''
+
+#Tema 10: Bases de datos con python.
+'''
+Conexion a SQLite con sqlite3:
+- Conectar a la base de datos: conn = sqlite3.connect('base_de_datos.db')
+- Crear un cursor: cursor = conn.cursor()
+- Ejecutar consultas SQL: cursor.execute('SQL_QUERY')
+- Obtener resultados: resultados = cursor.fetchall()
+- Guardar cambios: conn.commit()
+- Cerrar la conexion: conn.close()
+'''
+
+#Tema 11: lectura y escritura de archivos csv.
+'''
+Manejo de CSV con csv: 
+- csv.reader(): Lee archivos CSV.
+- csv.writer(): Escribe archivos CSV.
+- csv.DictReader(): Lee archivos CSV como diccionarios.
+- csv.DictWriter(): Escribe archivos CSV desde diccionarios.
+- Abrir archivos con newline='' para evitar problemas de formato.
+
+Gestores de contexto:
+- with: Se utiliza para manejar recursos como archivos, asegurando que se cierren correctamente.
+Ejemplo:
+with open('archivo.csv', 'r', newline='') as archivo:
+    lector = csv.reader(archivo)
+    for fila in lector:
+        print(fila)
+        
+Pasos a paso de csv a DataFrame con pandas:
+1. Importar pandas: import pandas as pd
+2. Leer CSV: df = pd.read_csv('archivo.csv')
+3. Explorar datos: df.head(), df.info()
+4. Manipular datos: df['columna'], df.loc[], df.iloc[]
+5. Guardar cambios: df.to_csv('archivo_modificado.csv', index=False)
+'''

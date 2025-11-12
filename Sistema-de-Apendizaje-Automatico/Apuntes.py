@@ -57,4 +57,32 @@ Tecnicas Principales:
 - Clustering: Agrupacion de datos en clusteres para detectar patrones ocultos. 
 - Arboles de decision: Modelos que utilizan una estructura de arbol para tomar decisiones basadas en condiciones.
 - Regresion: Tecnica utilizada para predecir valores continuos basados en relaciones entre variables.
+
+Capa de entrada: Recibe los datos iniciales para el procesamiento.
+Capa oculta: Procesan la informacion recibida mediante pesos y funciones de activacion.
+Capa de salida: Proporciona el resultado final del procesamiento del modelo.
+
+Redes neuronales - Perceptron Multicapa (MLP):
+- Compuesto por multiples capas de neuronas (entrada, ocultas, salida).
+- Definicion: Un perceptron multicapa es una red neuronal artificial que consta de varias capas de nodos, donde cada nodo (o neurona)
+    en una capa está conectado a todos los nodos de la capa siguiente. 
+- Arquitectura: 
+    - Capa de entrada: Recibe los datos crudos.
+    - Capas ocultas: Procesan los datos aplicando funciones de activacion no lineales.
+    - Capa de salida: Proporciona la predicción final.
+    
+- Tecnicas clave - Clustering: 
+    - Definicion: Tecnica no supervisada que agrupa datos similares en clusters basados en caracteristicas compartidas.
+* Algoritmos comunes: K-means, Clustering jerarquico.
+    - K-means: Algoritmo que particiona los datos en K clusters, asignando cada punto de datos al cluster con el centroide mas cercano.
+    - Clustering jerarquico: Crea una jerarquia de clusters mediante la fusion o division de clusters existentes.
+    
+- Tecnicas clave - Arboles de decision:
+    - Definicion: Modelo supervisado que utiliza una estructura de arbol para tomar decisiones basadas en condiciones.
+    - Componentes: 
+        - Nodo raiz: El primer punto de decision.
+        - Nodos internos: Preguntas o condiciones que se aplican para dividir los datos.
+        - Hojas: Resultados o decisiones finales.
+
+- Tecnicas clave - Arbol de decision - Random Forest:
 '''

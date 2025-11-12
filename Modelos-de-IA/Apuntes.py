@@ -49,5 +49,36 @@ Los sistemas inteligentes son tecnologias que aprenden, toman decisiones y se ad
 - Agentes Inteligentes: Sistemas que pueden percibir su entorno, razonar y tomar decisiones autonomamente.
 - Sistemas Cognitivos: Tecnologias que simulan el pensamiento humano para resolver problemas complejos y tomar decisiones informadas.
 
+'''
 
+#Tema 3: Modelos de IA para resolucion de problemas.
+'''
+¿Que es la resolucion de problemas con IA?
+La IA proporciona herramientas para abordar problemas complejos a traves de analisis de datos, optimizacion de decisiones y aprendizaje automatico.
+
+Tipos de problemas que pueden resolverse con IA:
+- Problemas de clasificacion: Asignar etiquetas o categorias a datos.
+- Problemas de regresion: Predecir valores continuos basados en datos de entrada.
+- Problemas de clustering: Agrupar datos (sin etiquetas) similares en conjuntos o clusters.
+- Problemas de optimizacion: Encontrar la mejor solucion entre varias posibles soluciones.
+
+Normalizacion de datos: Proceso de ajustar y escalar los datos para que esten en un rango similar, mejorando la eficiencia del modelo de IA.
+
+Validacion y optimizacion de modelos:
+- Validacion cruzada: Tecnica para evaluar el rendimiento del modelo dividiendo los datos en conjuntos de entrenamiento y prueba.
+- Optimizacion de hiperparametros: Ajuste de los parametros del modelo para mejorar su rendimiento.
+
+Metricas de rendimiento: 
+- Precisión: Proporción de predicciones correctas sobre el total de predicciones.
+- Recall (Sensibilidad): Es la capacidad del modelo para identificar correctamente los casos positivos.
+- Especificidad: Es la capacidad del modelo para identificar correctamente los casos negativos.
+- FPR (False Positive Rate): Proporción de negativos incorrectamente clasificados como positivos.
+- F1-Score: Media armonica entre precision y recall, proporcionando una unica medida de rendimiento del modelo.
+- AUC-ROC: Area bajo la curva ROC, que mide la capacidad del modelo para distinguir entre clases positivas y negativas.
+
+Formulas:
+- Precision: TP / (TP + FP)
+- Recall: TP / (TP + FN)
+- F1-Score: 2 * (Precision * Recall) / (Precision + Recall) 
+- Especificidad: TN / (TN + FP)
 '''
