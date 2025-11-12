@@ -469,3 +469,5 @@ Pasos a paso de csv a DataFrame con pandas:
 4. Manipular datos: df['columna'], df.loc[], df.iloc[]
 5. Guardar cambios: df.to_csv('archivo_modificado.csv', index=False)
 '''
+
+# tema 12: 
