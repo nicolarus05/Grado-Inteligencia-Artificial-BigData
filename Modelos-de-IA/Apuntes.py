@@ -75,10 +75,29 @@ Metricas de rendimiento:
 - FPR (False Positive Rate): Proporción de negativos incorrectamente clasificados como positivos.
 - F1-Score: Media armonica entre precision y recall, proporcionando una unica medida de rendimiento del modelo.
 - AUC-ROC: Area bajo la curva ROC, que mide la capacidad del modelo para distinguir entre clases positivas y negativas.
+- Funcion sigmoide: Funcion matematica que convierte cualquier valor real en un valor entre 0 y 1, utilizada en modelos de clasificacion binaria.
 
 Formulas:
 - Precision: TP / (TP + FP)
 - Recall: TP / (TP + FN)
 - F1-Score: 2 * (Precision * Recall) / (Precision + Recall) 
 - Especificidad: TN / (TN + FP)
+- FPR: FP / (FP + TN)
+- AUC-ROC: Integral de la curva ROC, que representa la relacion entre TPR y FPR.
+- Exactitud: (TP + TN) / (TP + TN + FP + FN)
+
+Predicciones continuas: Predicciones que pueden tomar cualquier valor dentro de un rango, como precios o temperaturas.
+Predicciones discretas: Predicciones que toman valores específicos y limitados, como categorias o etiquetas.
+
+Matriz de confusión: Tabla que muestra el rendimiento del modelo de clasificacion, comparando las predicciones con los valores reales.
+Validacion cruzada: Tecnica para evaluar el rendimiento del modelo dividiendo los datos en conjuntos de entrenamiento y prueba.
+
+¿Que es la automatizacion con IA?
+La automatizacion con IA implica el uso de tecnologias de inteligencia artificial para realizar tareas y procesos
+de manera automatica, mejorando la eficiencia y reduciendo la necesidad de intervencion humana.
+'''
+
+#Tema 4: 
+'''
+
 '''

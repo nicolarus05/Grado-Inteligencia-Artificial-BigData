@@ -84,5 +84,38 @@ Redes neuronales - Perceptron Multicapa (MLP):
         - Nodos internos: Preguntas o condiciones que se aplican para dividir los datos.
         - Hojas: Resultados o decisiones finales.
 
-- Tecnicas clave - Arbol de decision - Random Forest:
+- Tecnicas clave - Arbol de decision - Random Forest: 
+    - Definicion: Conjunto de arboles de decision que trabajan juntos para mejorar la precision y reducir el sobreajuste.
+    - Funcionamiento: Cada arbol en el bosque realiza una prediccion y la clase final se determina por votacion mayoritaria.
+    - Ventajas: Mayor precision, robustez frente al ruido, reduccion del sobreajuste.
+    - Aplicaciones: Clasificacion, regresion, deteccion de fraudes.
+    
+- Tecnicas clave - Regresion lineal: 
+    - Definicion: Tecnica estadistica utilizada para modelar la relacion entre una variable dependiente y una o mas variables independientes.
+    - Funcionamiento: Ajusta una linea recta a los datos que minimiza la suma de los errores cuadrados entre las predicciones y los valores reales.
+    - Aplicaciones: Prediccion de ventas, analisis de tendencias, evaluacion de riesgos.
+    
+Regrecion Lineal: 
+- Y: Variable dependiente (lo que queremos predecir).
+- X: Variable independiente (caracteristica utilizada para hacer la prediccion).
+- M: Pendiente de la linea (indica el cambio en Y por un cambio unitario en X).
+- B: Interseccion con el eje Y (valor de Y cuando X es 0).
+- Ecuacion: Y = M*X + B 
+
+- Tecnicasl clave - Regresion Logistica: 
+    - Definicion: Tecnica utilizada para modelar la probabilidad de una variable dependiente binaria basada en una o mas variables independientes.
+    - Funcionamiento: Utiliza la funcion sigmoide para transformar la salida lineal en una probabilidad entre 0 y 1.
+    - Aplicaciones: Diagnostico medico, deteccion de spam, analisis de riesgo crediticio.
+    - Formula: P(Y=1) = 1 / 1 + e^-(B0 + B1*X)
+Significado de los terminos:
+- P(Y=1): Probabilidad de que el evento ocurra.
+- e: Base del logaritmo natural (aproximadamente 2.71828).
+- B0: Es el valor de interseccion (constante).
+- B1: Es el coeficiente que ajusta cuanto impacto tiene X en la prediccion.
+- X: Variable independiente (caracteristica utilizada para hacer la prediccion).
+
+Regresion lineal: se utiliza cuando el resultado que queremos predecir es un valor nuemrico continuo.
+Regresion logistica: se utiliza cuando queremos predecir una probabilidad o una clase binaria (0 o 1).
+
+
 '''
