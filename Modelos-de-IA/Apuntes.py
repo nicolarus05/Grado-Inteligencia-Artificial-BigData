@@ -97,7 +97,7 @@ La automatizacion con IA implica el uso de tecnologias de inteligencia artificia
 de manera automatica, mejorando la eficiencia y reduciendo la necesidad de intervencion humana.
 '''
 
-#Tema 4: 
+#Tema 4: Procesamiento de Lenguaje Natural (PLN).
 '''
 
 '''
