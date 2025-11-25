@@ -116,6 +116,16 @@ Significado de los terminos:
 
 Regresion lineal: se utiliza cuando el resultado que queremos predecir es un valor nuemrico continuo.
 Regresion logistica: se utiliza cuando queremos predecir una probabilidad o una clase binaria (0 o 1).
+'''
 
+#TEMA 3: Algortimos de aprendijaje no supervisado
+'''
+Tecnicas principales:
+- Clustering: Agrupacion de datos en clusters basados en similitudes.
+- Reduccion de dimensionalidad: Tecnicas para reducir el numero de variables en un conjunto de datos.
 
+Casos de uso:
+- Segmentacion de clientes: Agrupar clientes con caracteristicas similares para marketing dirigido.
+- Agrupacion de imagenes: Organizar grandes conjuntos de imagenes en categorias basadas en similitudes visuales.
+- Deteccion de Patrones: Identificar patrones ocultos en datos complejos.
 '''
