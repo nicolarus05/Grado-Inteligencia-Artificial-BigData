@@ -50,8 +50,5 @@ ETL: Proceso de Extracción, Transformación y Carga de datos.
 
 #Tema 4: Introduccion a R.
 '''
-Api Token: KGAT_56a98ec9032f41c2eb409c53ea8922b8
-export KAGGLE_API_TOKEN=KGAT_56a98ec9032f41c2eb409c53ea8922b8
-kaggle competitions list
-username: nicolsgarcahernndez
+
 '''

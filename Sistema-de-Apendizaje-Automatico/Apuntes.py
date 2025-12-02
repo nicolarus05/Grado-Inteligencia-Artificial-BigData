@@ -129,3 +129,37 @@ Casos de uso:
 - Agrupacion de imagenes: Organizar grandes conjuntos de imagenes en categorias basadas en similitudes visuales.
 - Deteccion de Patrones: Identificar patrones ocultos en datos complejos.
 '''
+
+#Tema 4: Algoritmos de aprendizaje no supervisado.
+'''
+Definicion: Tipo de aprendizaje automatico donde se utiliza un conjunto de datos etiquetados para entrenar el modelo.
+Tipos de algoritmos supervisados: 
+- Regresion lineal: Utilizado para predecir valores continuos.
+- Regresion logistica: Utilizado para predecir probabilidades o clases binarias.
+- Arboles de decision: Utilizados para clasificacion y regresion.
+- Maquinas de vectores de soporte (SVM): Utilizadas para clasificacion y regresion.
+- Redes neuronales supervisadas: Utilizadas para tareas complejas como reconocimiento de voz e imagenes.
+
+- Maquinas de soporte vectorial (SVM):
+    - Definicion: Algoritmo supervisado utilizado para clasificacion y regresion que encuentra el hiperplano que mejor separa las clases en el espacio de caracteristicas.
+    - Concepto clave: 
+        - Margenes optimos: La distancia entre el hiperplano y los puntos de datos mas cercanos de cada clase.
+        - Los datos mas cercanos al hiperplano se llaman vectores de soporte.
+    - Ventajas: Eficaz en espacios de alta dimension, robusto frente al sobreajuste.
+    - Limitaciones: No es adecuado para conjuntos de datos muy grandes, sensibilidad a la eleccion del kernel.
+    Tipos comunes de funciones kernel:
+        - Lineal: Utilizado cuando los datos son linealmente separables.
+        - Polinomial: Utilizado para datos que no son linealmente separables, creando fronteras de decision no lineales.
+        - Radial Basis Function (RBF): Utilizado para manejar datos complejos y no lineales.
+        - Sigmoide: Utilizado en redes neuronales, similar a la funcion de activacion sigmoide.
+    
+    - Redes neuronales supervisadas:
+        - Definicion: Son modelos inspirados en el cerebro humano, compuestos por neuronas artificales organizadas en capas.
+        - Arquitectura:
+            - Capa de entrada: Recibe los datos iniciales.
+            - Capas ocultas: Procesan la informacion mediante pesos y funciones de activacion.
+            - Capa de salida: Proporciona la prediccion final.
+        - Funcionamiento: Durante el entrenamiento, los pesos se ajustan utilizando algoritmos como el retropropagacion para minimizar el error entre las predicciones y los valores reales.
+        - Ventajas: Capacidad para modelar relaciones complejas, adaptabilidad a diferentes tipos de datos.
+        - Limitaciones: Requiere grandes cantidades de datos y recursos computacionales, interpretabilidad limitada.
+'''
