@@ -47,3 +47,8 @@ ETL: Proceso de Extracción, Transformación y Carga de datos.
 - Arrays Multidimensionales: Estructuras de datos que permiten almacenar datos en más de una dimensión, facilitando el manejo de matrices y tensores.
 - Graficos 2D: Representaciones visuales de datos en dos dimensiones, utilizadas para analizar y comunicar información de manera efectiva.
 '''
+
+#Tema 4: Introduccion a R.
+'''
+
+'''

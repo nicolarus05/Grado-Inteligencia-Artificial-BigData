@@ -470,4 +470,15 @@ Pasos a paso de csv a DataFrame con pandas:
 5. Guardar cambios: df.to_csv('archivo_modificado.csv', index=False)
 '''
 
-# tema 12: 
+# tema 12: Programacion Orientada a Objetos (POO)
+'''
+Una clase es una plantilla para crear objetos que encapsula datos y comportamientos relacionados.
+Un objeto es una instancia de una clase que contiene atributos y metodos.
+Atributos son variables que almacenan datos relacionados con el objeto.
+Metodos son funciones definidas dentro de una clase que describen los comportamientos del objeto.
+Constructores son metodos especiales (__init__) que se llaman al crear un objeto para inicializar sus atributos.
+Encapsulacion es el principio de ocultar los detalles internos de una clase y exponer solo lo necesario.
+Herencia es el mecanismo por el cual una clase puede heredar atributos y metodos de otra clase.
+Polimorfismo es la capacidad de diferentes clases para ser tratadas como instancias de una clase base comun, permitiendo el uso de metodos con el mismo nombre en diferentes clases.
+
+'''

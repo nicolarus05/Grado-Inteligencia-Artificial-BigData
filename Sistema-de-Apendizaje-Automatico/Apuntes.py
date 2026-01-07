@@ -84,5 +84,82 @@ Redes neuronales - Perceptron Multicapa (MLP):
         - Nodos internos: Preguntas o condiciones que se aplican para dividir los datos.
         - Hojas: Resultados o decisiones finales.
 
-- Tecnicas clave - Arbol de decision - Random Forest:
+- Tecnicas clave - Arbol de decision - Random Forest: 
+    - Definicion: Conjunto de arboles de decision que trabajan juntos para mejorar la precision y reducir el sobreajuste.
+    - Funcionamiento: Cada arbol en el bosque realiza una prediccion y la clase final se determina por votacion mayoritaria.
+    - Ventajas: Mayor precision, robustez frente al ruido, reduccion del sobreajuste.
+    - Aplicaciones: Clasificacion, regresion, deteccion de fraudes.
+    
+- Tecnicas clave - Regresion lineal: 
+    - Definicion: Tecnica estadistica utilizada para modelar la relacion entre una variable dependiente y una o mas variables independientes.
+    - Funcionamiento: Ajusta una linea recta a los datos que minimiza la suma de los errores cuadrados entre las predicciones y los valores reales.
+    - Aplicaciones: Prediccion de ventas, analisis de tendencias, evaluacion de riesgos.
+    
+Regrecion Lineal: 
+- Y: Variable dependiente (lo que queremos predecir).
+- X: Variable independiente (caracteristica utilizada para hacer la prediccion).
+- M: Pendiente de la linea (indica el cambio en Y por un cambio unitario en X).
+- B: Interseccion con el eje Y (valor de Y cuando X es 0).
+- Ecuacion: Y = M*X + B 
+
+- Tecnicasl clave - Regresion Logistica: 
+    - Definicion: Tecnica utilizada para modelar la probabilidad de una variable dependiente binaria basada en una o mas variables independientes.
+    - Funcionamiento: Utiliza la funcion sigmoide para transformar la salida lineal en una probabilidad entre 0 y 1.
+    - Aplicaciones: Diagnostico medico, deteccion de spam, analisis de riesgo crediticio.
+    - Formula: P(Y=1) = 1 / 1 + e^-(B0 + B1*X)
+Significado de los terminos:
+- P(Y=1): Probabilidad de que el evento ocurra.
+- e: Base del logaritmo natural (aproximadamente 2.71828).
+- B0: Es el valor de interseccion (constante).
+- B1: Es el coeficiente que ajusta cuanto impacto tiene X en la prediccion.
+- X: Variable independiente (caracteristica utilizada para hacer la prediccion).
+
+Regresion lineal: se utiliza cuando el resultado que queremos predecir es un valor nuemrico continuo.
+Regresion logistica: se utiliza cuando queremos predecir una probabilidad o una clase binaria (0 o 1).
+'''
+
+#TEMA 3: Algortimos de aprendijaje no supervisado
+'''
+Tecnicas principales:
+- Clustering: Agrupacion de datos en clusters basados en similitudes.
+- Reduccion de dimensionalidad: Tecnicas para reducir el numero de variables en un conjunto de datos.
+
+Casos de uso:
+- Segmentacion de clientes: Agrupar clientes con caracteristicas similares para marketing dirigido.
+- Agrupacion de imagenes: Organizar grandes conjuntos de imagenes en categorias basadas en similitudes visuales.
+- Deteccion de Patrones: Identificar patrones ocultos en datos complejos.
+'''
+
+#Tema 4: Algoritmos de aprendizaje no supervisado.
+'''
+Definicion: Tipo de aprendizaje automatico donde se utiliza un conjunto de datos etiquetados para entrenar el modelo.
+Tipos de algoritmos supervisados: 
+- Regresion lineal: Utilizado para predecir valores continuos.
+- Regresion logistica: Utilizado para predecir probabilidades o clases binarias.
+- Arboles de decision: Utilizados para clasificacion y regresion.
+- Maquinas de vectores de soporte (SVM): Utilizadas para clasificacion y regresion.
+- Redes neuronales supervisadas: Utilizadas para tareas complejas como reconocimiento de voz e imagenes.
+
+- Maquinas de soporte vectorial (SVM):
+    - Definicion: Algoritmo supervisado utilizado para clasificacion y regresion que encuentra el hiperplano que mejor separa las clases en el espacio de caracteristicas.
+    - Concepto clave: 
+        - Margenes optimos: La distancia entre el hiperplano y los puntos de datos mas cercanos de cada clase.
+        - Los datos mas cercanos al hiperplano se llaman vectores de soporte.
+    - Ventajas: Eficaz en espacios de alta dimension, robusto frente al sobreajuste.
+    - Limitaciones: No es adecuado para conjuntos de datos muy grandes, sensibilidad a la eleccion del kernel.
+    Tipos comunes de funciones kernel:
+        - Lineal: Utilizado cuando los datos son linealmente separables.
+        - Polinomial: Utilizado para datos que no son linealmente separables, creando fronteras de decision no lineales.
+        - Radial Basis Function (RBF): Utilizado para manejar datos complejos y no lineales.
+        - Sigmoide: Utilizado en redes neuronales, similar a la funcion de activacion sigmoide.
+    
+    - Redes neuronales supervisadas:
+        - Definicion: Son modelos inspirados en el cerebro humano, compuestos por neuronas artificales organizadas en capas.
+        - Arquitectura:
+            - Capa de entrada: Recibe los datos iniciales.
+            - Capas ocultas: Procesan la informacion mediante pesos y funciones de activacion.
+            - Capa de salida: Proporciona la prediccion final.
+        - Funcionamiento: Durante el entrenamiento, los pesos se ajustan utilizando algoritmos como el retropropagacion para minimizar el error entre las predicciones y los valores reales.
+        - Ventajas: Capacidad para modelar relaciones complejas, adaptabilidad a diferentes tipos de datos.
+        - Limitaciones: Requiere grandes cantidades de datos y recursos computacionales, interpretabilidad limitada.
 '''
