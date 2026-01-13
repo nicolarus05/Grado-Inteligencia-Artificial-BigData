@@ -1,103 +1,53 @@
-#Tema 1 Introduzcion a la Inteleigencia Artificial
+# Tema 1: Introducción a la Inteligencia Artificial
 '''
-La inteligencia artificial es un campo de la informatica que busca crear sistemas capaces de realizar tareas que normalmente
-requieren inteligencia humana, como el aprendizaje, el razonamiento, la percepcion y la toma de decisiones.
+La Inteligencia Artificial (IA) es un campo de la informática que busca crear sistemas capaces de realizar tareas que normalmente
+requieren inteligencia humana, como reconocer patrones, aprender de la experiencia y tomar decisiones.
 
-Hay 2 tipos de IA:
-- IA debil: Sistemas diseñados para realizar tareas específicas, como asistentes virtuales o sistemas de recomendación.
-- IA fuerte: Sistemas con capacidades cognitivas generales similares a las humanas, capaces de entender, 
-             aprender y aplicar conocimientos en una amplia variedad de contextos.
+Hay 2 tipos de IA: 
+- IA débil: Sistemas diseñados para realizar una tarea específica, como asistentes virtuales o sistemas de recomendación.
+- IA fuerte: Sistemas (aún teóricos) con capacidades cognitivas generales similares a las humanas, capaces de entender, aprender 
+y aplicar conocimientos en una amplia variedad de contextos.
 
-Un modelo de IA es una representación matemática o algorítmica de un sistema de IA que se utiliza para realizar tareas específicas.
+Los principios fundamentales de la IA se apoyan en tres pilares:
+- Datos: El combustible que permite que los sistemas de IA aprendan.
+- Algoritmos: La lógica matemática que procesa los datos.
+- Modelos: Representaciones matemáticas entrenadas para realizar tareas concretas.
 
-Tipos de datos: 
-- Estructurados: Datos organizados en un formato predefinido, como tablas o bases de datos.
-- No estructurados: Datos que no tienen un formato predefinido, como texto, imágenes o videos.
+Un modelo de IA es una representación matemática entrenada con datos para realizar una tarea específica, como clasificar correos 
+o predecir un valor numérico.
 
-Un algoritmo es un conjunto de instrucciones paso a paso que se utilizan para resolver un problema o realizar una tarea específica.
-Tipos de algoritmos:
-- Clasificacion: Asignar una etiqueta o categoria a un conjunto de datos.
-- Regresion: Predecir un valor continuo basado en datos de entrada.
-- Clustering: Agrupar datos similares en conjuntos o clusters.
+Tipos de Datos: 
+- Estructurados: Datos organizados en un formato predefinido, como tablas o bases de datos. 
+- No estructurados: Datos que no tienen un formato predefinido, como texto libre, imágenes, audio o vídeos.
 
-Proceso de entrenamiento de un modelo de IA:
-- Entrenamiento: El modelo aprende a partir de un conjunto de datos de entrenamiento.
-- Evaluacion: Evaluar el rendimiento del modelo utilizando un conjunto de datos de validacion.
-- Ajuste: Ajustar los parametros del modelo para mejorar su rendimiento.
+Un algoritmo es un conjunto de instrucciones paso a paso que se utiliza para resolver un problema o realizar una tarea específica.
+Tipos de Algoritmos en IA:
+- Clasificación: Asignar una etiqueta o categoría a un conjunto de datos. (p. ej. spam/no spam).
+- Regresión: Predecir un valor continuo basado en datos de entrada. (p. ej. precio de una casa).
+- Clustering: Agrupar datos similares en conjunto o clústeres sin etiquetas previas (agrupamiento).
 
-Tipos de Modelos:
-- Modelos supervisados: El modelo aprende a partir de datos etiquetados.
-- Modelos no supervisados: El modelo aprende a partir de datos no etiquetados.
-- Modelos de Refuerzo: El modelo aprende a partir de interacciones con el entorno para maximizar una recompensa.
+Proceso de entrenamiento de un modelo de IA: 
+- Entrenamiento: El modelo aprende a partir de un conjunto de datos de entrenamiento, ajustando sus parámetros internos. 
+- Evaluación: Se evalúa el rendimiento del modelo utilizando un conjunto de datos de validación o prueba.
+- Ajuste: Se ajustan los parámetros o la arquitectura del modelo para mejorar su rendimiento y evitar errores sistemáticos.
 
-Fases de la curva de aprendizaje:
-- Fase inciial: El modelo comienza a aprender y su rendimiento mejora rapidamente.
-- Fase intermedia: El rendimiento del modelo sigue mejorando, pero a un ritmo mas lento.
-- Fase de saturacion: El rendimiento del modelo se estabiliza y las mejoras son marginal
+Tipos de modelos: 
+- Modelos supervisados: El modelo aprende a partir de datos etiquetados (entrada + salida conocida).
+- Modelos no supervisados: El modelo aprende a partir de datos no etiquetados buscando patrones o estructuras ocultas.
+- Modelos de refuerzo: El modelo aprende a partir de interacciones con el entorno, recibiendo recompensas o castigos y tratando de
+maximizar la recompensa acumulada.
 
-Concepto de overfitting(sobreajuste): El modelo se ajusta demasiado bien a los datos de entrenamiento, 
-pero no generaliza bien a datos nuevos o no vistos anteriormente.
-'''
+Fases de la curva de aprendizaje: 
+- Fase inicial: El modelo comienza a aprender y su rendimiento mejora rápidamente con pocos datos.
+- Fase intermedia: El rendimiento del modelo sigue mejorando, pero a un ritmo más lento a medida que se añaden más datos.
+- Fase de saturación: El rendimiento del modelo se estabiliza y las mejoras al añadir más datos son marginales.
 
-#Tema 2: Sistemas Inteligentes y Eficiencia Operativa:
-'''
-Los sistemas inteligentes son tecnologias que aprenden, toman decisiones y se adaptan a nuevas situaciones.
-
-- Sistemas Expertos: Sistemas que emulan la toma de decisiones de un experto humano en un dominio especifico.
-- Redes Neuronales: Sistemas inspirados en la estructura del cerebro humano que pueden aprender y reconocer patrones complejos.
-- Aprendizaje Automático: Tecnicas que permiten a los sistemas aprender y mejorar a partir de datos sin ser programados explicitamente.
-- Agentes Inteligentes: Sistemas que pueden percibir su entorno, razonar y tomar decisiones autonomamente.
-- Sistemas Cognitivos: Tecnologias que simulan el pensamiento humano para resolver problemas complejos y tomar decisiones informadas.
-
+Concepto de sobreajuste (overfitting): 
+El modelo se ajusta demasiado bien a los datos de entrenamiento, capturando ruido o detalles específicos, pero no generaliza bien 
+a datos nuevos o no vistos anteriormente.
 '''
 
-#Tema 3: Modelos de IA para resolucion de problemas.
-'''
-¿Que es la resolucion de problemas con IA?
-La IA proporciona herramientas para abordar problemas complejos a traves de analisis de datos, optimizacion de decisiones y aprendizaje automatico.
-
-Tipos de problemas que pueden resolverse con IA:
-- Problemas de clasificacion: Asignar etiquetas o categorias a datos.
-- Problemas de regresion: Predecir valores continuos basados en datos de entrada.
-- Problemas de clustering: Agrupar datos (sin etiquetas) similares en conjuntos o clusters.
-- Problemas de optimizacion: Encontrar la mejor solucion entre varias posibles soluciones.
-
-Normalizacion de datos: Proceso de ajustar y escalar los datos para que esten en un rango similar, mejorando la eficiencia del modelo de IA.
-
-Validacion y optimizacion de modelos:
-- Validacion cruzada: Tecnica para evaluar el rendimiento del modelo dividiendo los datos en conjuntos de entrenamiento y prueba.
-- Optimizacion de hiperparametros: Ajuste de los parametros del modelo para mejorar su rendimiento.
-
-Metricas de rendimiento: 
-- Precisión: Proporción de predicciones correctas sobre el total de predicciones.
-- Recall (Sensibilidad): Es la capacidad del modelo para identificar correctamente los casos positivos.
-- Especificidad: Es la capacidad del modelo para identificar correctamente los casos negativos.
-- FPR (False Positive Rate): Proporción de negativos incorrectamente clasificados como positivos.
-- F1-Score: Media armonica entre precision y recall, proporcionando una unica medida de rendimiento del modelo.
-- AUC-ROC: Area bajo la curva ROC, que mide la capacidad del modelo para distinguir entre clases positivas y negativas.
-- Funcion sigmoide: Funcion matematica que convierte cualquier valor real en un valor entre 0 y 1, utilizada en modelos de clasificacion binaria.
-
-Formulas:
-- Precision: TP / (TP + FP)
-- Recall: TP / (TP + FN)
-- F1-Score: 2 * (Precision * Recall) / (Precision + Recall) 
-- Especificidad: TN / (TN + FP)
-- FPR: FP / (FP + TN)
-- AUC-ROC: Integral de la curva ROC, que representa la relacion entre TPR y FPR.
-- Exactitud: (TP + TN) / (TP + TN + FP + FN)
-
-Predicciones continuas: Predicciones que pueden tomar cualquier valor dentro de un rango, como precios o temperaturas.
-Predicciones discretas: Predicciones que toman valores específicos y limitados, como categorias o etiquetas.
-
-Matriz de confusión: Tabla que muestra el rendimiento del modelo de clasificacion, comparando las predicciones con los valores reales.
-Validacion cruzada: Tecnica para evaluar el rendimiento del modelo dividiendo los datos en conjuntos de entrenamiento y prueba.
-
-¿Que es la automatizacion con IA?
-La automatizacion con IA implica el uso de tecnologias de inteligencia artificial para realizar tareas y procesos
-de manera automatica, mejorando la eficiencia y reduciendo la necesidad de intervencion humana.
-'''
-
-#Tema 4: Procesamiento de Lenguaje Natural (PLN).
+# Tema 2: Sistemas Inteligentes y Eficiencia Operativa
 '''
 
 '''
