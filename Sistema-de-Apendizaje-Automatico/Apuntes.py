@@ -175,3 +175,66 @@ Organizar grandes conjuntos de imágenes en categorías basadas en similitudes v
 - Detección de patrones: 
 Descubrir estructuras ocultas en grandes volúmenes de datos (p.ej. patrones en datos médicos, financieros o de sensores).
 '''
+
+# Tema 4: Algoritmos de aprendizaje supervisado
+'''
+Definición: 
+Tipo de aprendizaje automático donde se utiliza un conjunto de datos etiquetados
+para entrenar un modelo que prediga o clasifique nuevas entradas. 
+Cada ejemplo de entrenamiento incluye una entrada (característica) y una salida conocida (etiqueta).
+
+Elementos clave: 
+- Datos de entrada: Información utilizada para entrenar el modelo.
+- Etiquetas: Resultados esperados asociados a cada dato de entrada.
+- Modelo: Función que aprende la relación entre las entradas y las etiquetas.
+
+Funcionamiento general: 
+- Entrenamiento: El modelo analiza los datos etiquetados para identificar patrones y ajustar sus parámetros internos.
+- Predicción: Una vez entrenado, el modelo se utiliza para predecir etiquetas de nuevos datos.
+- Evaluación: Se comparan las predicciones con las etiquetas reales y se calculan métricas como precisión, recall o F1-score.
+
+Tipos de algoritmos supervisados:
+- Regresión lineal: Utilizada para predecir valores continuos (p.ej. precio de viviendas).
+- Regresión logística: Utilizada para predecir probabilidades o clases binarias (p.ej. spam/no spam).
+- Árboles de decisión: Utilizados para clasificación y regresión, basados en una estructura de árbol con reglas simples. 
+- Máquinas de vectores de soporte (SVM): Utilizadas principalmente para clasificación, buscando el hiperplano 
+que mejor separa las clases. 
+- Redes neuronales: Utilizadas para tareas complejas como reconocimiento de voz, imágenes o traducción automática.
+
+Máquinas de soporte vectorial (SVM):
+- Definición: 
+Algoritmos supervisados para problemas de clasificación (y regresión) que buscan separar los datos en clases 
+mediante un hiperplano óptimo.
+- Conceptos clave: 
+    - Márgenes óptimos: Distancia entre el hiperplano y los puntos de datos más cercanos de cada clase. 
+    - Vectores de soporte: Puntos de datos más cercanos al hiperplano que determinan su posición.
+- Ventajas: 
+    - Eficaces en espacios de alta dimensionalidad. 
+    - Pueden trabajar bien incluso con pocos datos. 
+    - Uso de funciones kernel para problemas no lineales.
+- Limitaciones:
+    - Poco eficaces en conjunto de datos muy grandes.
+    - Sensibles a la elección del kernel y de los parámetros.
+- Funciones kernel comunes:
+    - Lineal: Adecuado cuando los datos son linealmente separables.
+    - Polinómico: Crear fronteras de decisión polinómicas.
+    - RBF (Radial Basis Function): Muy usado para datos complejos y no lineales. 
+    - Sigmoide: Similar a ciertas funciones de activación en redes neuronales.
+    
+Redes neuronales supervisadas: 
+- Definición: 
+Modelos inspirados en el cerebro humano, compuestos por neuronas artificiales organizadas en capas para procesar información y realizar predicciones complejas.
+- Arquitectura básica: 
+    - Capa de entrada: Recibe los datos iniciales.
+    - Capas ocultas: Procesan los datos mediante pesos y funciones de activación no lineales.
+    - Capa de salida: Genera la predicción o clasificación final.
+- Funcionamiento:
+    - Propagación hacia adelante (feedforward): Los datos atraviesan la red desde la capa de entrada hasta la de salida.
+    - Retropropagación (backpropagation): Se calcula el error entre la salida del modelo y el valor real, y se ajustan los pesos para minimizar ese error.
+- Ventajas: 
+    - Gran capacidad para modelar relaciones complejas.
+    - Alta flexibilidad para distintos tipos de datos y tareas.
+- Limitaciones:
+    - Requieren grandes cantidades de datos y recursos computacionales.
+    - Menor interpretabilidad (a menudo consideradas "cajas negras").
+'''
