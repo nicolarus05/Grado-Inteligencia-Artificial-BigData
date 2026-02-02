@@ -238,3 +238,57 @@ Modelos inspirados en el cerebro humano, compuestos por neuronas artificiales or
     - Requieren grandes cantidades de datos y recursos computacionales.
     - Menor interpretabilidad (a menudo consideradas "cajas negras").
 '''
+
+# Tema 5: Modelos de redes neuronales
+'''
+1.1 ¿Qué son las redes neuronales?
+Las redes neuronales son modelos computacionales inspirados en el cerebro humano, 
+diseñados para reconocer patrones y realizar tareas como clasificación, 
+regresión y generación de datos. Estas redes están compuestas por neuronas artificiales 
+organizadas en capas, que procesan información mediante conexiones ponderadas.
+
+Aplicaciones comunes:
+- Reconocimiento de imágenes y voz.
+- Traducción automática.
+- Diagnóstico médico.
+- Predicción financiera.
+- Generación de contenido (imágenes, texto, música).
+
+1.2 Historia y evolución de las redes neuronales
+- Década de 1940: Primeros modelos teóricos de neuronas artificiales (McCulloch y Pitts).
+- Década de 1950-60: Desarrollo del perceptrón (Rosenblatt).
+- Década de 1980: Introducción del algoritmo de retropropagación para entrenar redes multicapa.
+- Década de 2000: Avances en hardware (GPUs) y disponibilidad de grandes conjuntos de datos impulsaron el renacimiento del aprendizaje profundo.
+- Actualidad: Redes neuronales profundas (DNNs) y arquitecturas avanzadas como CNNs, RNNs y Transformers dominan el campo de la inteligencia artificial.
+
+1.3 Componentes de una red neuronal
+- Neuronas: Unidades básicas que reciben entradas, las procesan y generan salidas.
+- Pesos: Parámetros que determinan la importancia de cada entrada.
+- Sesgo: Valor adicional que ayuda a ajustar la salida de la neurona.
+- Funciones de activación: Introducen no linealidad y deciden si una neurona se activa. Ejemplos:
+  - Sigmoide: \( f(x) = \frac{1}{1 + e^{-x}} \)
+  - ReLU (Rectified Linear Unit): \( f(x) = \max(0, x) \)
+  - Softmax: Convierte un vector de valores en probabilidades (suma 1).
+
+2.0 Tipos de redes neuronales
+- Redes Neuronales Feedforward (FNN):
+  - Definición: Redes donde la información fluye en una sola dirección, desde la capa de entrada hasta la capa de salida.
+  - Características: Simples y utilizadas para tareas básicas de clasificación y regresión.
+  - Limitaciones: No tienen memoria, por lo que no son adecuadas para datos secuenciales.
+
+- Redes Neuronales Convolucionales (CNN):
+  - Especializadas en el procesamiento de datos con estructura de cuadrícula, como imágenes.
+  - Utilizan capas convolucionales para extraer características locales.
+
+- Redes Neuronales Recurrentes (RNN):
+  - Diseñadas para procesar datos secuenciales, como texto o series temporales.
+  - Tienen conexiones recurrentes que permiten mantener información de estados previos.
+
+- Redes Generativas Antagónicas (GAN):
+  - Compuestas por dos redes (generador y discriminador) que compiten entre sí.
+  - Utilizadas para generar datos realistas, como imágenes o videos.
+
+- Transformers:
+  - Arquitectura basada en mecanismos de atención.
+  - Dominan tareas de procesamiento de lenguaje natural y visión por computadora.
+'''
