@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Experto en Ajedrez</title>
+<style>
+/* Theme Variables */
+:root {
+  --font-family-display: Arial, sans-serif;
+  --font-weight-display: 600;
+  --font-family-content: Arial, sans-serif;
+  --font-weight-content: 400;
+  --font-size-content: 16px;
+  --line-height-content: 1.4;
+}
+
+/* DARK THEME */
+body.theme-dark {
+  --color-bg-base: #0f172a;
+  --color-bg-elevated: #020617;
+  --color-bg-surface: #1e293b;
+  --color-bg-muted: #334155;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-accent: #38bdf8;
+  --color-primary: #38bdf8;
+  --color-primary-foreground: #0f172a;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-content);
+  font-weight: var(--font-weight-content);
+  font-size: var(--font-size-content);
+  line-height: var(--line-height-content);
+  overflow-x: hidden;
+}
+
+/* Slide Container */
+.slide {
+  width: 960px;
+  height: 540px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Layout Utilities */
+.row { flex-direction: row; }
+.col { flex-direction: column; }
+.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.items-center { align-items: center; }
+.fill-width { flex: 1; }
+.fill-height { flex: 1; display: flex; flex-direction: column; }
+
+/* Spacing */
+.gap-sm { gap: 0.5rem; }
+.gap-md { gap: 1rem; }
+.gap-lg { gap: 1.5rem; }
+.p-16 { padding: 4rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+
+/* Typography */
+h1, h2, h3 {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-family-display);
+  line-height: 1.2;
+  margin: 0;
+}
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.75rem; }
+
+.text-4xl { font-size: 2.25rem; }
+.text-xl { font-size: 1.25rem; }
+.text-lg { font-size: 1.125rem; }
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.font-bold { font-weight: 700; }
+.text-center { text-align: center; }
+
+/* Custom diagram styles */
+.diagram-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.component-box {
+  position: absolute;
+  padding: 1rem;
+  border: 3px solid;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.arrow {
+  position: absolute;
+  height: 3px;
+  transform-origin: left center;
+}
+
+.arrow::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.flow-label {
+  position: absolute;
+  font-size: 0.7rem;
+  font-style: italic;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+</style>
+</head>
+<body class="theme-dark">
+
+  <section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+    <h2 class="text-center mb-4" style="color: #38bdf8;">Sistema Experto en Ajedrez — Estructura y Dinámica</h2>
+    
+    <div class="diagram-container" style="position: relative; height: 420px;">
+      
+      <!-- 1. INTERFAZ DE USUARIO -->
+      <div class="component-box" style="left: 5px; top: 120px; width: 145px; height: 95px; background-color: rgba(56,189,248,0.15); border-color: #38bdf8;">
+        <h3 style="font-size: 0.95rem; color: #38bdf8; margin-bottom: 0.3rem;">👤 INTERFAZ</h3>
+        <p style="font-size: 0.7rem; color: #cbd5e1; line-height: 1.3;">Introduce movimientos<br>Recibe recomendaciones</p>
+      </div>
+
+      <!-- 2. MÓDULO DE ENTRADA -->
+      <div class="component-box" style="left: 190px; top: 10px; width: 160px; height: 85px; background-color: rgba(168,85,247,0.15); border-color: #a855f7;">
+        <h3 style="font-size: 0.95rem; color: #a855f7; margin-bottom: 0.3rem;">♟️ MÓDULO ENTRADA</h3>
+        <p style="font-size: 0.7rem; color: #cbd5e1; line-height: 1.3;">Posición tablero (FEN)<br>Movimientos legales</p>
+      </div>
+
+      <!-- 3. MEMORIA DE TRABAJO -->
+      <div class="component-box" style="left: 190px; top: 125px; width: 160px; height: 90px; background-color: rgba(234,179,8,0.15); border-color: #eab308;">
+        <h3 style="font-size: 0.95rem; color: #eab308; margin-bottom: 0.3rem;">🧠 MEMORIA TRABAJO</h3>
+        <p style="font-size: 0.7rem; color: #cbd5e1; line-height: 1.3;">Estado actual<br>Hechos evaluados</p>
+      </div>
+
+      <!-- 4. MOTOR DE INFERENCIA -->
+      <div class="component-box" style="left: 190px; top: 245px; width: 160px; height: 90px; background-color: rgba(239,68,68,0.15); border-color: #ef4444;">
+        <h3 style="font-size: 0.95rem; color: #ef4444; margin-bottom: 0.3rem;">⚙️ MOTOR INFERENCIA</h3>
+        <p style="font-size: 0.7rem; color: #cbd5e1; line-height: 1.3;">Minimax + Alpha-Beta<br>Encadenamiento adelante</p>
+      </div>
+
+      <!-- 5. MÓDULO DE EXPLICACIÓN -->
+      <div class="component-box" style="left: 5px; top: 265px; width: 145px; height: 75px; background-color: rgba(20,184,166,0.15); border-color: #14b8a6;">
+        <h3 style="font-size: 0.95rem; color: #14b8a6; margin-bottom: 0.3rem;">💬 EXPLICACIÓN</h3>
+        <p style="font-size: 0.7rem; color: #cbd5e1; line-height: 1.3;">¿Por qué este mov?<br>Justificación</p>
+      </div>
+
+      <!-- 6. BASE DE CONOCIMIENTO -->
+      <div class="component-box" style="left: 395px; top: 10px; width: 360px; height: 325px; background-color: rgba(34,197,94,0.08); border-color: #22c55e;">
+        <h3 style="font-size: 1.05rem; color: #22c55e; margin-bottom: 0.8rem;">📚 BASE DE CONOCIMIENTO</h3>
+        
+        <!-- Sub-componentes -->
+        <div style="background-color: rgba(34,197,94,0.2); border: 2px solid #22c55e; padding: 0.5rem; margin-bottom: 0.4rem;">
+          <p style="font-size: 0.75rem; color: #f1f5f9;"><strong>♖ APERTURAS</strong></p>
+          <p style="font-size: 0.65rem; color: #cbd5e1;">Ruy López, Siciliana, Francesa...</p>
+        </div>
+        
+        <div style="background-color: rgba(59,130,246,0.2); border: 2px solid #3b82f6; padding: 0.5rem; margin-bottom: 0.4rem;">
+          <p style="font-size: 0.75rem; color: #f1f5f9;"><strong>⚔️ TÁCTICAS</strong></p>
+          <p style="font-size: 0.65rem; color: #cbd5e1;">Horquilla, Clavada, Ataque doble...</p>
+        </div>
+        
+        <div style="background-color: rgba(245,158,11,0.2); border: 2px solid #f59e0b; padding: 0.5rem; margin-bottom: 0.4rem;">
+          <p style="font-size: 0.75rem; color: #f1f5f9;"><strong>♛ ESTRATEGIA</strong></p>
+          <p style="font-size: 0.65rem; color: #cbd5e1;">Control del centro, peones...</p>
+        </div>
+        
+        <div style="background-color: rgba(236,72,153,0.2); border: 2px solid #ec4899; padding: 0.5rem; margin-bottom: 0.4rem;">
+          <p style="font-size: 0.75rem; color: #f1f5f9;"><strong>👑 FINALES</strong></p>
+          <p style="font-size: 0.65rem; color: #cbd5e1;">Rey y peón, torre vs rey...</p>
+        </div>
+        
+        <div style="background-color: rgba(168,85,247,0.2); border: 2px solid #a855f7; padding: 0.5rem;">
+          <p style="font-size: 0.75rem; color: #f1f5f9;"><strong>📏 REGLAS</strong></p>
+          <p style="font-size: 0.65rem; color: #cbd5e1;">Evaluación posicional</p>
+        </div>
+      </div>
+
+      <!-- FLECHAS Y FLUJO -->
+      
+      <!-- Usuario → Módulo entrada -->
+      <div class="arrow" style="left: 150px; top: 145px; width: 38px; background-color: #38bdf8; transform: rotate(-30deg);">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #38bdf8; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 158px; top: 128px; background-color: #0f172a; color: #38bdf8; font-size: 0.65rem;">posición</div>
+
+      <!-- Módulo entrada → Memoria trabajo -->
+      <div class="arrow" style="left: 270px; top: 95px; width: 70px; background-color: #a855f7; transform: rotate(90deg);">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #a855f7; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 280px; top: 105px; background-color: #0f172a; color: #a855f7; font-size: 0.65rem;">estado</div>
+
+      <!-- Memoria → Motor -->
+      <div class="arrow" style="left: 270px; top: 215px; width: 28px; background-color: #eab308; transform: rotate(90deg);">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #eab308; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 280px; top: 223px; background-color: #0f172a; color: #eab308; font-size: 0.65rem;">consulta</div>
+
+      <!-- Motor → Memoria (vuelta) -->
+      <div class="arrow" style="left: 240px; top: 243px; width: 28px; background-color: #ef4444; transform: rotate(-90deg);">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #ef4444; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 210px; top: 223px; background-color: #0f172a; color: #ef4444; font-size: 0.65rem;">actualiza</div>
+
+      <!-- Motor → Base Conocimiento -->
+      <div class="arrow" style="left: 350px; top: 290px; width: 43px; background-color: #ef4444;">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #ef4444; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 353px; top: 276px; background-color: #0f172a; color: #ef4444; font-size: 0.65rem;">aplica reglas</div>
+
+      <!-- Base Conocimiento → Motor (vuelta) -->
+      <div class="arrow" style="left: 393px; top: 195px; width: 43px; background-color: #22c55e; transform: rotate(180deg);">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #22c55e; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 353px; top: 181px; background-color: #0f172a; color: #22c55e; font-size: 0.65rem;">devuelve hechos</div>
+
+      <!-- Motor → Explicación -->
+      <div class="arrow" style="left: 150px; top: 290px; width: 38px; background-color: #14b8a6; transform: rotate(180deg);">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #14b8a6; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 155px; top: 276px; background-color: #0f172a; color: #14b8a6; font-size: 0.65rem;">mejor mov.</div>
+
+      <!-- Explicación → Usuario -->
+      <div class="arrow" style="left: 77px; top: 265px; width: 48px; background-color: #14b8a6; transform: rotate(-110deg);">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #14b8a6; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 72px; top: 240px; background-color: #0f172a; color: #14b8a6; font-size: 0.65rem;">recomendación</div>
+
+      <!-- Memoria → Base (consulta directa) -->
+      <div class="arrow" style="left: 350px; top: 170px; width: 43px; background-color: #eab308; border-style: dashed;">
+        <div style="position: absolute; right: -8px; top: -4px; width: 0; height: 0; border-left: 10px solid #eab308; border-top: 5px solid transparent; border-bottom: 5px solid transparent;"></div>
+      </div>
+      <div class="flow-label" style="left: 353px; top: 156px; background-color: #0f172a; color: #eab308; font-size: 0.65rem;">busca patrones</div>
+
+      <!-- LEYENDA NUMERADA -->
+      <div style="position: absolute; left: 5px; bottom: 5px; font-size: 0.6rem; color: #94a3b8; line-height: 1.5;">
+        <p><span style="display: inline-block; width: 16px; height: 16px; background-color: #38bdf8; border-radius: 50%; text-align: center; color: #0f172a; font-weight: bold; margin-right: 4px;">1</span>Usuario introduce posición</p>
+        <p><span style="display: inline-block; width: 16px; height: 16px; background-color: #a855f7; border-radius: 50%; text-align: center; color: #0f172a; font-weight: bold; margin-right: 4px;">2</span>Se traduce a formato FEN</p>
+        <p><span style="display: inline-block; width: 16px; height: 16px; background-color: #eab308; border-radius: 50%; text-align: center; color: #0f172a; font-weight: bold; margin-right: 4px;">3</span>Se almacena en memoria</p>
+      </div>
+
+      <div style="position: absolute; left: 250px; bottom: 5px; font-size: 0.6rem; color: #94a3b8; line-height: 1.5;">
+        <p><span style="display: inline-block; width: 16px; height: 16px; background-color: #ef4444; border-radius: 50%; text-align: center; color: #0f172a; font-weight: bold; margin-right: 4px;">4</span>Motor aplica Minimax + α-β</p>
+        <p><span style="display: inline-block; width: 16px; height: 16px; background-color: #22c55e; border-radius: 50%; text-align: center; color: #0f172a; font-weight: bold; margin-right: 4px;">5</span>Base aporta reglas y patrones</p>
+        <p><span style="display: inline-block; width: 16px; height: 16px; background-color: #14b8a6; border-radius: 50%; text-align: center; color: #0f172a; font-weight: bold; margin-right: 4px;">6</span>Explicación justifica mejor mov.</p>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

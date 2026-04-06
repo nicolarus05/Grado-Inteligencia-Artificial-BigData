@@ -1,0 +1,225 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "debab21a-b487-4119-8ea1-d86081c89407",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=36.7167&longitude=-3.5167&current_weather=true&hourly=relativehumidity_2m&timezone=Europe%2FMadrid&forecast_days=1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "5bd01899-0a25-41e3-a5fc-f833dc02990a",
+      "name": "HTTP Request",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json;\n\nconst ts = body.current_weather.time;\nconst temp = body.current_weather.temperature;\nconst windspeed = body.current_weather.windspeed;\n// La hora actual en hourly para obtener la humedad correspondiente\nconst hourlyTimes = body.hourly.time;\nconst hourlyHumidity = body.hourly.relativehumidity_2m;\nconst idx = hourlyTimes.indexOf(ts);\nconst humidity = idx !== -1 ? hourlyHumidity[idx] : null;\n\nreturn [{\n  json: {\n    city: \"Motril\",\n    ts: ts,                // ISO 8601, ej: \"2026-02-20T16:00\"\n    temp_c: temp,\n    humidity_pct: humidity,\n    windspeed_kmh: windspeed,\n    fetched_at: new Date().toISOString()\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "ae0805af-1e87-4f68-92a7-922038874547",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO weather_motril (city, ts, temp_c, humidity_pct, windspeed_kmh)\nVALUES (\n  '{{ $json.city }}',\n  '{{ $json.ts }}',\n  {{ $json.temp_c }},\n  {{ $json.humidity_pct }},\n  {{ $json.windspeed_kmh }}\n)\nON CONFLICT (city, ts) DO NOTHING;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        640,
+        0
+      ],
+      "id": "b486fbee-8be2-41f2-aee0-b0e8adad0ca4",
+      "name": "Execute a SQL query",
+      "credentials": {
+        "postgres": {
+          "id": "XKFVPnbANv5ZViCO",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        64,
+        272
+      ],
+      "id": "81d9e6f0-75db-4bb4-902f-01408de36448",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "const err = $input.first().json;\n\nreturn [{\n  json: {\n    workflow_id:   err.workflow.id,\n    workflow_name: err.workflow.name,\n    failed_node:   err.execution.lastNodeExecuted,\n    error_message: err.execution.error?.message ?? \"Sin mensaje\",\n    error_cause:   err.execution.error?.description ?? \"Desconocido\",\n    execution_id:  err.execution.id,\n    timestamp:     new Date().toISOString(),\n    execution_url: `https://TU_N8N_HOST/workflow/${err.workflow.id}/executions/${err.execution.id}`\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        272
+      ],
+      "id": "1bab10aa-c50d-4607-b0a5-d7a41e23e388",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "fromEmail": "n.garcia.alum@fp.mercedarias.es",
+        "toEmail": "n.garcia.alum@fp.mercedarias.es",
+        "html": "=🚨 FALLO en workflow: {{ $json.workflow_name }}\n📍 Nodo fallido: {{ $json.failed_node }}\n❌ Error: {{ $json.error_message }}\n🔍 Causa: {{ $json.error_cause }}\n🆔 Execution ID: {{ $json.execution_id }}\n🕐 Timestamp: {{ $json.timestamp }}\n🔗 Ver log: {{ $json.execution_url }}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        608,
+        272
+      ],
+      "id": "2b7e08c8-ab97-42af-a59d-7cea8e4bdefa",
+      "name": "Send an Email",
+      "webhookId": "f1e7fece-4fe5-4bae-93a4-0319a5674e9b",
+      "credentials": {
+        "smtp": {
+          "id": "JU7e5fij9Yx4gbZH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Crear tabla DLQ primero\nCREATE TABLE weather_dlq (\n  id            SERIAL PRIMARY KEY,\n  workflow_name TEXT,\n  failed_node   TEXT,\n  error_message TEXT,\n  execution_id  TEXT,\n  raw_payload   JSONB,\n  created_at    TIMESTAMPTZ DEFAULT now()\n);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        864,
+        272
+      ],
+      "id": "65592e8d-a165-4106-8939-b835bd12ae65",
+      "name": "Execute a SQL query1",
+      "credentials": {
+        "postgres": {
+          "id": "XKFVPnbANv5ZViCO",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send an Email": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "42929381-0a5d-481b-a030-b5a1ba6d5bbd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e28fc959d7a9f4f4e453c0cbee5fc1496722ab2bf2aff5405f41ce4535e859a2"
+  },
+  "id": "rVxSe0Ww4TOmARxG",
+  "tags": []
+}

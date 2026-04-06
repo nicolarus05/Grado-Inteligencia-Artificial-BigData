@@ -1,0 +1,391 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "08318cf9-7a97-42b6-ac55-5b1056a03e8b",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        864,
+        -256
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const err = $input.first().json;\nreturn [{ json: {\n  workflow_name: err.workflow?.name ?? 'unknown',\n  failed_node:   err.execution?.lastNodeExecuted ?? 'unknown',\n  error_message: err.execution?.error?.message ?? 'Sin mensaje',\n  execution_id:  err.execution?.id ?? 'unknown',\n  timestamp:     new Date().toISOString()\n}}];"
+      },
+      "id": "91c808fe-da9f-4624-ad5e-68e901285207",
+      "name": "Code - Format Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        -256
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "teton750@gmail.com",
+        "toEmail": "ngh2605@gmail.com",
+        "subject": "🚨 Fallo en workflow: {{ $json.workflow_name }}",
+        "options": {}
+      },
+      "id": "f7b2ace1-2e9c-4a84-81e3-daa74cc75a87",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1344,
+        -256
+      ],
+      "webhookId": "3164e60d-ef36-465b-9931-8490247e78a1",
+      "credentials": {
+        "smtp": {
+          "id": "JU7e5fij9Yx4gbZH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO weather_dlq (workflow_name, failed_node, error_message, execution_id, raw_payload)\nVALUES (\n  '{{ $json.workflow_name }}',\n  '{{ $json.failed_node }}',\n  '{{ $json.error_message }}',\n  '{{ $json.execution_id }}',\n  '{}'::jsonb\n)\nON CONFLICT DO NOTHING;",
+        "options": {}
+      },
+      "id": "5494ffe7-765a-4ccd-8d79-5b13fb7da6da",
+      "name": "Postgres - DLQ",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1584,
+        -256
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "XKFVPnbANv5ZViCO",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "id": "0ceb6de0-aa3c-4ba0-9011-876ba8890ae2",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        816,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "path": "weather-reto",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "9591ecbf-97fb-40da-b903-886c20a4b29c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        816,
+        160
+      ],
+      "webhookId": "weather-reto-001"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "latitude",
+              "value": "36.7167"
+            },
+            {
+              "name": "longitude",
+              "value": "-3.5167"
+            },
+            {
+              "name": "current_weather",
+              "value": "true"
+            },
+            {
+              "name": "hourly",
+              "value": "relativehumidity_2m"
+            },
+            {
+              "name": "timezone",
+              "value": "Europe/Madrid"
+            },
+            {
+              "name": "forecast_days",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7dcf553d-606d-491e-a2c4-42988ae84db5",
+      "name": "HTTP Request - Open-Meteo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1088,
+        48
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json;\nconst ts = body.current_weather?.time;\nconst temp = body.current_weather?.temperature;\nconst windspeed = body.current_weather?.windspeed;\nconst idx = body.hourly.time.indexOf(ts);\nconst humidity = idx !== -1 ? body.hourly.relativehumidity_2m[idx] : null;\n\nif (!ts || temp === undefined) throw new Error('Datos incompletos desde Open-Meteo');\nif (temp < -50 || temp > 60) throw new Error('Temperatura fuera de rango: ' + temp);\n\nreturn [{ json: {\n  city: 'Motril',\n  ts: ts,\n  temp_c: temp,\n  humidity_pct: humidity,\n  windspeed_kmh: windspeed,\n  fetched_at: new Date().toISOString()\n}}];"
+      },
+      "id": "fed7cf05-a772-403a-84a4-72e98321016b",
+      "name": "Code - Transform",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        48
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO weather_reto (city, ts, temp_c, humidity_pct, windspeed_kmh, fetched_at)\nVALUES (\n  '{{ $json.city }}',\n  '{{ $json.ts }}'::timestamp,\n  {{ $json.temp_c }}::numeric,\n  {{ $json.humidity_pct === null ? 'NULL' : $json.humidity_pct }},\n  {{ $json.windspeed_kmh }}::numeric,\n  '{{ $json.fetched_at }}'::timestamptz\n)\nON CONFLICT (city, ts) DO NOTHING;\n",
+        "options": {}
+      },
+      "id": "4eaed554-93de-451c-a9fb-ef47a849ca2b",
+      "name": "Postgres - Insert",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1584,
+        -48
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "XKFVPnbANv5ZViCO",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "TU_GOOGLE_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "id"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "city": "={{ $json.city }}",
+            "ts": "={{ $json.ts }}",
+            "temp_c": "={{ $json.temp_c }}",
+            "humidity_pct": "={{ $json.humidity_pct }}",
+            "windspeed_kmh": "={{ $json.windspeed_kmh }}",
+            "fetched_at": "={{ $json.fetched_at }}"
+          },
+          "matchingColumns": [
+            "ts"
+          ],
+          "schema": [
+            {
+              "id": "city",
+              "displayName": "city",
+              "type": "string"
+            },
+            {
+              "id": "ts",
+              "displayName": "ts",
+              "type": "string"
+            },
+            {
+              "id": "temp_c",
+              "displayName": "temp_c",
+              "type": "number"
+            },
+            {
+              "id": "humidity_pct",
+              "displayName": "humidity_pct",
+              "type": "number"
+            },
+            {
+              "id": "windspeed_kmh",
+              "displayName": "windspeed_kmh",
+              "type": "number"
+            },
+            {
+              "id": "fetched_at",
+              "displayName": "fetched_at",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8cfec087-9bd2-4d16-bc54-d703958ecdf8",
+      "name": "Google Sheets - Append",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1584,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'ok', city: $json.city, ts: $json.ts, temp_c: $json.temp_c, humidity_pct: $json.humidity_pct }) }}",
+        "options": {}
+      },
+      "id": "b4ee922b-299c-40c9-88de-b707d3e6a2ff",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1824,
+        48
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code - Format Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Format Error": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Postgres - DLQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - Open-Meteo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - Open-Meteo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request - Open-Meteo": {
+      "main": [
+        [
+          {
+            "node": "Code - Transform",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Transform": {
+      "main": [
+        [
+          {
+            "node": "Postgres - Insert",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Sheets - Append",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres - Insert": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Append": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "fa2550f4-e0c0-402b-bab6-28b86c380212",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e28fc959d7a9f4f4e453c0cbee5fc1496722ab2bf2aff5405f41ce4535e859a2"
+  },
+  "id": "Br2KTvTcYm0I547B",
+  "tags": []
+}

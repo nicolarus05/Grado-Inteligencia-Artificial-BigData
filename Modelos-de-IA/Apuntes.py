@@ -171,3 +171,66 @@ Limitaciones del PLN:
 - Comprensión real: Los modelos no comprenden el lenguaje como un humano, sino que se basan en patrones estadísticos aprendiendo 
 de grandes cantidades de texto.
 '''
+
+# Tema 5: Sistemas Robotizados
+'''
+Definicion: Los sistemas robotizados son máquinas programables capaces de realizar tareas de forma autonoma o semiautonoma, 
+utilizando sensores, actuadores y algoritmos de control para interactuar con su entorno y llevar a cabo actividades especificas. 
+
+Características principales de los sistemas robotizados: 
+- Capacidad de movimiento y manipulación física.
+- Sensibilidad a su entorno mediante sensores.
+- Autonomía en la toma de decisiones.
+- Capacidad de aprendizaje y adaptación.
+
+Relevancia de los sistemas robotizados: 
+- Automatización de tareas repetitivas o peligrosas.
+- Mejora de la eficiencia y productividad en industrias como la manufactura, logística o agricultura.
+- Asistencia en tareas de cuidado, salud o servicios.
+
+Tecnicas de control: El control asegura el correcto funcionamiento de los sistemas robotizados, permitiendo que realicen tareas
+especificas de manera precisa y eficiente. 
+
+Tipos de Tecnicas de control:
+- Control PID(Proportional-Integral-Derivativo): Técnica de control que ajusta la salida del sistema en función de la diferencia
+    entre el valor deseado y el valor real, utilizando tres componentes: proporcional, integral y derivativo.
+- Control adaptativo: Técnica que ajusta los parámetros de control en tiempo real para adaptarse a cambios en el entorno 
+    o en el sistema.
+- Control basado en aprendizaje: Técnica que utiliza algoritmos de aprendizaje automático para mejorar el rendimiento del sistema
+    a lo largo del tiempo, aprendiendo de la experiencia y adaptándose a nuevas situaciones.
+    
+Tipos de Controladores:
+- Controladores de posición: Controlan la posición de un robot o una parte del robot, asegurando que alcance 
+    una ubicación específica.
+- Controladores de velocidad: Controlan la velocidad de movimiento de un robot o una parte del robot, asegurando que se mueva
+    a una velocidad específica.
+    
+Aplicaciones en la Industria:
+- Manufactura: Robots de ensamblaje, soldadura, pintura y empaquetado.
+- Logística: Robots de almacenamiento, transporte y clasificación de mercancías.
+- Agricultura: Robots de siembra, riego, cosecha y monitoreo de cultivos.
+- Salud: Robots quirúrgicos, de rehabilitación y asistencia a pacientes.
+
+Modelado y Control cinematico: El modelado cinemático implica describir el movimiento de un robot en términos de sus articulaciones
+y su geometría, mientras que el control cinemático se enfoca en diseñar algoritmos para controlar ese movimiento de manera precisa
+y eficiente, asegurando que el robot alcance las posiciones y trayectorias deseadas.
+'''
+
+# Tema 6: Sistemas Expertos
+'''
+Estructura de un sistema experto:
+- Base de conocimientos: Contiene hechos, reglas y procedimientos relacionados 
+    con un dominio específico.
+- Motor de inferencia: Procesa la información de la base de conocimientos para 
+    llegar a conclusiones.
+- Interfaz de usuario: Permite a los usuarios interactuar con el sistema, 
+    ingresando datos y recibiendo respuestas.
+    
+Estrategias de control:
+- Encadenamiento hacia adelante (forward chaining): El motor de inferencia comienza con los datos disponibles y aplica las reglas
+    para generar nuevas conclusiones hasta llegar a una solución.
+- Encadenamiento hacia atrás (backward chaining): El motor de inferencia comienza con una hipótesis o conclusión deseada y trabaja
+    hacia atrás para verificar si los datos disponibles respaldan esa conclusión.
+- Encadenamiento mixto: Combina ambos enfoques, permitiendo flexibilidad en la inferencia según el contexto.
+
+'''
