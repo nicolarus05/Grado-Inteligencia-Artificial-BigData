@@ -1,0 +1,21 @@
+# Entorno virtual - no versionar (demasiados archivos, se recrea con pip install -r requirements.txt)
+venv/
+.venv/
+env/
+
+# Caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Modelos entrenados grandes (opcionales, descomentar si se quieren excluir)
+# modelos/*.keras
+# modelos/*.h5
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
