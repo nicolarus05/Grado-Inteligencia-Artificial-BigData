@@ -38,12 +38,17 @@ def cargar_datos(ruta_entrenamiento: str, ruta_validacion: str):
         tf.keras.layers.RandomFlip("horizontal"),        # Volteo horizontal: un paquete
                                                           # dañado sigue dañado si lo miramos
                                                           # desde el lado opuesto.
-        tf.keras.layers.RandomRotation(0.1),             # Rotación ±10%: simula leves
-                                                          # variaciones de ángulo de cámara.
-        tf.keras.layers.RandomZoom(0.1),                 # Zoom ±10%: simula distancias
+        tf.keras.layers.RandomRotation(0.15),            # Rotación ±15%: simula variaciones
+                                                          # de ángulo de cámara en la cinta.
+        tf.keras.layers.RandomZoom(0.15),                # Zoom ±15%: simula distancias
                                                           # variables a la cinta.
-        tf.keras.layers.RandomBrightness(0.1),           # Variación de brillo: compensa
+        tf.keras.layers.RandomBrightness(0.2),           # Variación de brillo ±20%: compensa
                                                           # cambios de iluminación en fábrica.
+        tf.keras.layers.RandomContrast(0.2),             # Variación de contraste ±20%: ayuda
+                                                          # a generalizar con diferentes cámaras.
+        tf.keras.layers.RandomTranslation(0.1, 0.1),    # Desplazamiento ±10% en ambos ejes:
+                                                          # simula el paquete en distintas
+                                                          # posiciones de la cinta.
     ], name="data_augmentation")
 
     # -- Función de preprocesamiento común (normalización) --------------------
@@ -54,8 +59,13 @@ def cargar_datos(ruta_entrenamiento: str, ruta_validacion: str):
         return imagen, etiqueta
 
     def normalizar_y_aumentar(imagen, etiqueta):
-        imagen = tf.cast(imagen, tf.float32) / 255.0
+        # IMPORTANTE: augmentation ANTES de normalizar, porque
+        # RandomBrightness y RandomContrast esperan por defecto píxeles
+        # en rango [0, 255]. Si se aplican sobre [0, 1], los ajustes de
+        # brillo/contraste serían desproporcionados y corromperían la imagen.
+        imagen = tf.cast(imagen, tf.float32)
         imagen = augmentation(imagen, training=True)
+        imagen = imagen / 255.0
         return imagen, etiqueta
 
     # -- Carga desde directorio -----------------------------------------------
@@ -84,13 +94,15 @@ def cargar_datos(ruta_entrenamiento: str, ruta_validacion: str):
     )
 
     # -- Aplicar preprocesamiento y optimizar pipeline ------------------------
-    # .map()    → transforma cada batch (normalización + augmentation)
-    # .cache()  → guarda en memoria tras la primera época (acelera en CPU)
+    # IMPORTANTE: .cache() va ANTES de .map(augmentation) para que cada época
+    # genere variaciones NUEVAS de las imágenes. Si se cachea DESPUÉS del
+    # augmentation, las transformaciones se fijan en la primera época y el
+    # modelo siempre ve las mismas imágenes → el augmentation no sirve.
     # .prefetch → prepara el siguiente batch mientras el modelo procesa el actual
     ds_entrenamiento = (
         ds_entrenamiento_raw
-        .map(normalizar_y_aumentar, num_parallel_calls=tf.data.AUTOTUNE)
         .cache()
+        .map(normalizar_y_aumentar, num_parallel_calls=tf.data.AUTOTUNE)
         .prefetch(tf.data.AUTOTUNE)
     )
 

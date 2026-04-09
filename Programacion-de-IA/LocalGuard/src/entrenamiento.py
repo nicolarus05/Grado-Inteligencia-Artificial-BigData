@@ -9,9 +9,9 @@ import os
 import tensorflow as tf
 
 # ── Constantes ───────────────────────────────────────────────────────────────
-EPOCHS = 30               # Número máximo de épocas. Con EarlyStopping, rara vez
-                           # se llega a 30: el entrenamiento se detiene cuando
-                           # deja de mejorar → evita overfitting y ahorra tiempo en CPU.
+EPOCHS = 50               # Número máximo de épocas. Con un learning rate bajo (1e-4)
+                           # el modelo necesita más épocas para converger. EarlyStopping
+                           # detendrá el entrenamiento si deja de mejorar.
 RUTA_MODELO = os.path.join("modelos", "modelo_cnn.keras")
 
 
@@ -40,7 +40,7 @@ def entrenar_modelo(modelo, ds_entrenamiento, ds_validacion):
     # no los de la última (que podría ser peor por overfitting).
     early_stopping = tf.keras.callbacks.EarlyStopping(
         monitor="val_loss",
-        patience=5,
+        patience=10,
         restore_best_weights=True,
         verbose=1,
     )
@@ -55,6 +55,18 @@ def entrenar_modelo(modelo, ds_entrenamiento, ds_validacion):
         verbose=1,
     )
 
+    # ReduceLROnPlateau: reduce el learning rate automáticamente cuando
+    # val_loss deja de mejorar durante 5 épocas (patience). Multiplica
+    # el LR por 0.5 (factor), permitiendo al modelo afinar los pesos
+    # con pasos más pequeños. min_lr evita que baje demasiado.
+    reducir_lr = tf.keras.callbacks.ReduceLROnPlateau(
+        monitor="val_loss",
+        factor=0.5,
+        patience=5,
+        min_lr=1e-6,
+        verbose=1,
+    )
+
     # ── Entrenamiento ────────────────────────────────────────────────────
     # model.fit() ejecuta el bucle de entrenamiento:
     # por cada época recorre todos los batches, calcula la pérdida,
@@ -63,7 +75,7 @@ def entrenar_modelo(modelo, ds_entrenamiento, ds_validacion):
         ds_entrenamiento,
         validation_data=ds_validacion,
         epochs=EPOCHS,
-        callbacks=[early_stopping, checkpoint],
+        callbacks=[early_stopping, checkpoint, reducir_lr],
         verbose=1,
     )
 
