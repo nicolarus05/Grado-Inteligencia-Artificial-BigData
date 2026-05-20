@@ -292,3 +292,8 @@ Aplicaciones comunes:
   - Arquitectura basada en mecanismos de atención.
   - Dominan tareas de procesamiento de lenguaje natural y visión por computadora.
 '''
+
+#tema 7: Evaluacion de resultados y calidad. 
+'''
+
+'''

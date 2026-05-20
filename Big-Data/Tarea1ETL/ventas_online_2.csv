@@ -1,0 +1,41 @@
+pedido_id,fecha_pedido,cliente,producto,categoria,precio_unitario,unidades,ciudad,metodo_pago,descuento,valoracion_cliente
+1000,2024/02/20,ISABEL,Camiseta,Ropa,136.96,5.0,madrid,Efectivo,0.0,5
+1001,2024-03-08,Sara,Auriculares,Electrónica,87.41,,sevilla,Bizum,25.0,5
+1002,2024-02-29,Carlos,Ratón,electrónica,177.7,5.0,Málagaa,Efectivo,20.0,1
+1003,28-Apr-2024,Sara,Mochila,Accesorios,NaN,-1.0,Granada,efectivoo,15.0,2
+1004,07-May-2024,Lucía,Balón,Deporte,154.82,,Sevilla,tarjetaa,25.0,2
+1005,2024-01-13,Isabel,Camiseta,Ropa,NaN,4.0,Sevilla,tarjetaa,,1
+1006,2024-03-28,María,Ratón,Electrónica,96.3,5.0,Valencia,Tarjeta,20.0,
+1007,05/04/2024,Lucía,Reloj,Accesorios,102.61,,Córdoba,tarjetaa,15.0,2
+1008,2024-05-04,Laura,Auriculares,Electrónica,75.8,2.0,Granada,Tarjeta,5.0,cinco
+1009,05-Apr-2024,Laura,Lámpara,Hogar,107.90,5.0,Valencia,Bizum,-5.0,cinco
+1010,11/05/2024,Laura,Zapatillas,Ropa,49.87,-1.0,córdoba,Tarjeta,25.0,1
+1011,15-Apr-2024,Lucía,Monitor,Electrónica,52.4,,Madrid,Transferencia,25.0,4
+1012,2024-03-04,CARLOS,Altavoz,electrónica,71.16,2.0,Málaga,Efectivo,20.0,4
+1013,2024-04-07,Pablo,Zapatillas,ropa,168.03,2.0,Madrid,Transferencia,0.0,2
+1014,2024-03-21,Sara,Lámpara,Hogar,NaN,-1.0,Madrid,Tarjeta,0.0,cinco
+1015,2024/01/11,Ana,Balón,Deporte,NaN,1.0,Córdoba,tarjetaa,15.0,5
+1016,2024/04/27,Juan,Balón,Deporte,66.3,4.0,Málaga,Bizum,5.0,1
+1017,2024-05-15, Miguel ,Camiseta,Ropa,73.06,3.0,Sevilla,efectivoo,20.0,5
+1018,2024/03/08,Isabel,Altavoz,electrónica,NaN,5.0,Málaga,efectivoo,25.0,2
+1019,2024-01-03,Pablo,Auriculares,electrónica,58.95,-1.0,Sevilla,efectivoo,-5.0,5
+1020,2024-03-04,Juan,Monitor,Electrónica,118.59,1.0,Sevilla,Tarjeta,25.0,2
+1021,15/04/2024,Pedro,Ratón,Electrónica,185.52,,Valencia,Efectivo,25.0,
+1022,19-Feb-2024,LUCÍA,Ratón,Electrónica,164.2,3.0,Sevilla,Efectivo,0.0,cinco
+1023,2024/01/28, Pedro ,Taza,Hogar,169.5,1.0,Granada,tarjetaa,20.0,1
+1024,2024-04-20,Sara,Ratón,Electrónica,117.4,1.0,Córdoba,tarjetaa,15.0,3
+1025,07/04/2024,Isabel,Altavoz,Electrónica,65.3,3.0,Madrid,Efectivo,-5.0,cinco
+1026,Jan 22 2024,Miguel,Auriculares,Electrónica,123.3,4.0,Madrid,Transferencia,10.0,cinco
+1027,2024/04/16,Laura,Zapatillas,Ropa,136.20,2.0,granada,tarjetaa,5.0,4
+1028,22/05/2024,Luis,Ratón,Electrónica,6.08,,Madrid,efectivoo,,1
+1029,01-May-2024,Juan,Altavoz,Electrónica,152.3,5.0,Valencia,tarjetaa,,2
+1030,08/02/2024,Lucía,Taza,Hogar,127.22,-1.0,Sevilla,tarjetaa,5.0,2
+1031,Jan 02 2024,Sara,Zapatillas,Ropa,17.1,4.0,Valencia,tarjetaa,-5.0,4
+1032,12-Feb-2024,Lucía,Ratón,Electrónica,180.1,2.0,Sevillaa,Bizum,-5.0,cinco
+1033,Apr 07 2024,María,Ratón,Electrónica,88.6,2.0,Granada,Transferencia,25.0,3
+1034,2024/01/06, Sara ,Auriculares,Electrónica,190.62,,córdobaa,Efectivo,15.0,
+1035,2024-05-28,María,Zapatillas,Ropa,141.40,5.0,Jaén,Efectivo,20.0,1
+1036,2024-05-24,Lucía,Ratón,Electrónica,NaN,2.0,Granada,efectivoo,5.0,
+1037,2024/02/15,Pedro,Zapatillas,Ropa,170.67,4.0,Sevilla,efectivoo,10.0,4
+1038,2024/04/28,Isabel,Balón,Deporte,120.5,,Málaga,Transferencia,15.0,
+1039,02-Mar-2024,Miguel,Lámpara,Hogar,160.6,3.0,Jaén,Tarjeta,15.0,1
